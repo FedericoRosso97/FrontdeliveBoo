@@ -27,7 +27,7 @@
                 <h1>
                     Cosa vuoi mangiare?
                 </h1>
-                <form action="GET">
+                <form action="" method="GET">
                     <input type="text" placeholder="Cerca tra centinaia di piatti e ristoranti!">
                     <button type="submit">
                         <i class="fa-solid fa-magnifying-glass"></i>
