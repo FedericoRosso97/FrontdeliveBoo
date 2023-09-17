@@ -18,7 +18,7 @@
             <!-- PASSWORD -->
 
             <div class="form-group">
-                <label for="email">
+                <label for="password">
                     Inserisci la tua password:
                 </label>
                 <input type="text" v-model="password">
