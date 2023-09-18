@@ -1,21 +1,20 @@
 <template>
     <div>
-        <h1>
-            Main
-        </h1>
+        Restaurant
     </div>
 </template>
 
 <script>
+import { store } from '../store';
 import axios from 'axios';
+
 export default {
-
-    name: 'AppMain',
-
+    name: 'AppHome',
     data() {
         return {
+            store,
             cards: [],
-            apiUrl : ''
+            apiUrl: ''
         }
     },
 
@@ -40,7 +39,8 @@ export default {
         this.getCards();
     },
 }
-    
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+
+</style>
