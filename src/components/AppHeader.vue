@@ -9,15 +9,15 @@
             <!-- LOG IN / REGISTRAZIONE -->
         
             <div class="logIn">
-                <a href="">
+                <router-link :to="{ name: 'login' }">
                     Log-in
-                </a>
+                </router-link>
                 <span>
                     |
                 </span>
-                <a href="">
+                <router-link :to="{ name: 'registration' }">
                     Registrati
-                </a>
+                </router-link>
             </div>
         </div>
         <div class="bottom-header">
@@ -59,6 +59,7 @@ export default {
                 height: 200%;
             }
             div.logIn{
+                span,
                 a{
                     text-decoration: none;
                     color: white;

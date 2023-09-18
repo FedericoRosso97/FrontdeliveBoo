@@ -1,6 +1,8 @@
 import { createRouter,createWebHistory} from 'vue-router';
 
 import AppHome from './pages/AppHome.vue';
+import LoginForm from './pages/LoginForm.vue';
+import RegistrationForm from './pages/RegistrationForm.vue';
 
 const router = createRouter({
     history:createWebHistory(),
@@ -9,6 +11,16 @@ const router = createRouter({
             path: '/',
             name: 'home', 
             component: AppHome
+        },
+        {
+            path: '/login',
+            name: 'login', 
+            component: LoginForm
+        },
+        {
+            path: '/registration',
+            name: 'registration', 
+            component: RegistrationForm
         },
     ]
 });
