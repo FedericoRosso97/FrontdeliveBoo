@@ -1,46 +1,18 @@
-<template>
+<template lang="">
     <div>
-        Restaurant
+        <h1>
+            EDIT
+        </h1>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iste non sapiente cupiditate, similique quo ut delectus cum perspiciatis sed eligendi, mollitia, ratione adipisci! Qui ratione reiciendis excepturi molestias minus.
+        </p>
     </div>
 </template>
-
 <script>
-import { store } from './store';
-import axios from 'axios';
-
 export default {
-    name: 'AppHome',
-    data() {
-        return {
-            store,
-            cards: [],
-            apiUrl: ''
-        }
-    },
-
-    methods: {
-        getCards() {
-
-            axios.get(this.apiUrl, {
-                params: {
-                    
-                }
-            })
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        }
-    },
-
-    created() {
-        this.getCards();
-    },
+    
 }
 </script>
-
-<style lang="scss">
-
+<style lang="">
+    
 </style>
