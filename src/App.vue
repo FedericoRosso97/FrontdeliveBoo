@@ -19,7 +19,7 @@ export default{
 
     <main>
         <router-view>
-            
+
         </router-view>
     </main>
 
@@ -30,4 +30,9 @@ export default{
 
 <style lang="scss">
 @import './styles/generals.scss';
+
+body{
+    background-color: black;
+    color: azure;
+}
 </style>
