@@ -1,5 +1,5 @@
 <template>
-    <header class="home-start">
+    <header :class="(store.searchBar === true)? 'home-start' : 'home-small'">
         <div class="upper-header">
 
             <!-- LOGO -->
@@ -38,7 +38,7 @@
                 <img src="../assets/user-img.png" alt="user image">
             </div>
         </div>
-        
+
         <div class="bottom-header" v-if="store.searchBar === true">
 
             <!-- SEARCHBAR -->
@@ -73,6 +73,7 @@ export default {
 
 <style scoped lang="scss">
     @use '../styles/partials/variables.scss' as *;
+    header.home-small,
     header.home-start{
         height: 35vh;
         padding: 2.5rem 12rem;
@@ -146,6 +147,16 @@ export default {
                         }
                     }
                 }
+            }
+        }
+    }
+    header.home-small{
+        height: 10vh;
+        background: linear-gradient(to top,$BlueColor 0%,$BlueColor 50%,$BlueColor 50%,$BlueColor 100%);
+
+        div.upper-header{
+            img{
+                height: 160px;
             }
         }
     }
