@@ -12,16 +12,16 @@ const router = createRouter({
             name: 'home', 
             component: AppHome
         },
-        {
-            path: '/login',
-            name: 'login', 
-            component: LoginForm
-        },
-        {
-            path: '/registration',
-            name: 'registration', 
-            component: RegistrationForm
-        },
+        // {
+        //     path: '/login',
+        //     name: 'login', 
+        //     component: LoginForm
+        // },
+        // {
+        //     path: '/registration',
+        //     name: 'registration', 
+        //     component: RegistrationForm
+        // },
     ]
 });
 

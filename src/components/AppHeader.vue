@@ -9,15 +9,21 @@
             <!-- LOG IN / REGISTRAZIONE -->
         
             <div class="logIn">
-                <router-link :to="{ name: 'login' }">
+                <!-- <router-link :to="{ name: 'login' }">
                     Log-in
-                </router-link>
+                </router-link> -->
+                <a href="">
+                    Log-in
+                </a>
                 <span>
                     |
                 </span>
-                <router-link :to="{ name: 'registration' }">
+                <!-- <router-link :to="{ name: 'registration' }">
                     Registrati
-                </router-link>
+                </router-link> -->
+                <a href="http://127.0.0.1:8000/register">
+                    Registrati
+                </a>
             </div>
         </div>
         <div class="bottom-header">
