@@ -8,7 +8,7 @@
 
 <script>
 export default {
-    name:'AppHeader'
+    name:'AppFooter'
 }
 </script>
 
