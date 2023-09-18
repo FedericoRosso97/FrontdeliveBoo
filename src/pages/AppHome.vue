@@ -3,6 +3,7 @@
         <h1>
             AppHome
         </h1>
+        <a href="http:http://127.0.0.1:8000/register">Login</a>
     </div>
 </template>
 
