@@ -27,6 +27,7 @@
             </div>
         </div>
         <div class="bottom-header">
+            
             <!-- SEARCHBAR -->
     
             <div class="searchBar">
