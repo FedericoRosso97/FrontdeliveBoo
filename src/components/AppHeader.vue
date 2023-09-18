@@ -8,7 +8,7 @@
 
             <!-- LOG IN / REGISTRAZIONE -->
         
-            <div class="logIn">
+            <div class="logIn" v-if="store.logIn === false">
                 <!-- <router-link :to="{ name: 'login' }">
                     Log-in
                 </router-link> -->
@@ -25,9 +25,22 @@
                     Registrati
                 </a>
             </div>
+            <div class="logIn-ok" v-if="store.logIn === true">
+                <router-link :to="{ name: 'dashboard' }">
+                    Dashboard
+                </router-link>
+                <span>
+                    |
+                </span>
+                <a href="">
+                    Logout
+                </a>
+                <img src="../assets/user-img.png" alt="user image">
+            </div>
         </div>
-        <div class="bottom-header">
-            
+        
+        <div class="bottom-header" v-if="store.searchBar === true">
+
             <!-- SEARCHBAR -->
     
             <div class="searchBar">
@@ -46,8 +59,15 @@
 </template>
 
 <script>
+import { store } from '../store';
+
 export default {
-    name:'AppHeader'
+    name:'AppHeader',
+    data(){
+        return{
+            store,
+        }
+    }
 }
 </script>
 
@@ -65,6 +85,7 @@ export default {
             img{
                 height: 200%;
             }
+            div.logIn-ok,
             div.logIn{
                 span,
                 a{
@@ -73,6 +94,12 @@ export default {
                 }
                 a:hover{
                     text-decoration: underline;
+                }
+            }
+            div.logIn-ok{
+                img{
+                    height: 55px;
+                    margin-left: 2rem;
                 }
             }
         }

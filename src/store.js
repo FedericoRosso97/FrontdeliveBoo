@@ -1,5 +1,7 @@
 import {reactive} from 'vue';
 
 export const store = reactive({
-    SearchBar : true,
+    logIn : false,
+    searchBar : true,
+    advancedSearch : false,
 });
