@@ -8,11 +8,11 @@
 
             <!-- LOG IN / REGISTRAZIONE -->
         
-            <div class="logIn" v-if="store.logIn === false">
+            <div class="logIn">
                 <!-- <router-link :to="{ name: 'login' }">
                     Log-in
                 </router-link> -->
-                <a href="">
+                <a href="http://127.0.0.1:8000/login">
                     Log-in
                 </a>
                 <span>
@@ -24,18 +24,6 @@
                 <a href="http://127.0.0.1:8000/register">
                     Registrati
                 </a>
-            </div>
-            <div class="logIn-ok" v-if="store.logIn === true">
-                <router-link :to="{ name: 'dashboard' }">
-                    Dashboard
-                </router-link>
-                <span>
-                    |
-                </span>
-                <a href="">
-                    Logout
-                </a>
-                <img src="../assets/user-img.png" alt="user image">
             </div>
         </div>
 
@@ -95,12 +83,6 @@ export default {
                 }
                 a:hover{
                     text-decoration: underline;
-                }
-            }
-            div.logIn-ok{
-                img{
-                    height: 55px;
-                    margin-left: 2rem;
                 }
             }
         }
