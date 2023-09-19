@@ -6,14 +6,13 @@
     </div>
 
     <!--CHOOSE FROM THE MENù-->
-    <div>
+    <div class="restourant-types">
         <ul>
-            <li>antpasto</li>
-            <li>primo</li>
-            <li>secondo</li>
-            <li>dolci</li>
-            <li>bevande</li>
-            <li>caffetteria</li>
+            <li v-for="plate in plates">
+                <h3>
+                    {{ plate.name }}
+                </h3>
+            </li>
         </ul>
     </div>
 
@@ -23,6 +22,31 @@
 
 <script>
 export default {
+    name: 'Menù',
+    data() {
+        return {
+            plates: [
+                {
+                    name:'antipasto'
+                },
+                {
+                    name:'primo'
+                },
+                {
+                    name:'secondo'
+                },
+                {
+                    name:'bevande'
+                },
+                {
+                    name:'dolci'
+                },
+                {
+                    name:'caffetteria'
+                },
+            ],
+        }
+    },
 }
 </script>
 
@@ -36,6 +60,11 @@ div.type-restaurant-title {
     h2 {
         text-align: center;
     }
+}
+
+.restourant-types{
+    margin: 0 auto;
+    width: 85%;
 }
 
 ul {
