@@ -8,11 +8,42 @@
         </p>
     </div>
 </template>
+
 <script>
+import axios from 'axios';
 export default {
-    
+    name: 'AppMain',
+
+    data() {
+        return {
+            cards: [],
+            apiUrl : ''
+        }
+    },
+
+    methods: {
+        getCards() {
+
+            axios.get(this.apiUrl, {
+                params: {
+                    
+                }
+            })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        }
+    },
+
+    created() {
+        this.getCards();
+    },
 }
 </script>
+
 <style scoped lang="">
     
 </style>
