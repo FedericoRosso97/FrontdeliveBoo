@@ -26,7 +26,7 @@ export default {
                 {
                     route: 'menù',
                     name: 'menù'
-                }
+                },
             ]
 
             }

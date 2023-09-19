@@ -33,6 +33,8 @@
         </div>
     </div>
 
+    <!--  bottoni
+    -->
     <div class="ms-5 mt-3">
         <button class="ms-5 mt-3">
             Modifica piatto
@@ -41,12 +43,13 @@
                 Aggiungi piatto
         </button>
     </div>
+
+
 </template>
 
 
 <script>
 export default {
-    
 }
 </script>
 

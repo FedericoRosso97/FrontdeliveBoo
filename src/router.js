@@ -3,10 +3,9 @@ import { createRouter, createWebHistory } from "vue-router";
 //importo pagine
 import Restaurant from './pages/Restaurant.vue';
 import Menù from './pages/Menù.vue';
-//import EditFood from './pages/EditFood.vue';
+import EditFood from './pages/EditFood.vue';
 
 //import Add from './pages/Add.vue';
-
 
 
 const router = createRouter({
@@ -21,6 +20,11 @@ const router = createRouter({
             path: '/menù',
             name: 'menù', 
             component: Menù
+        },
+        {
+            path: '/editfood',
+            name: 'editfood', 
+            component: EditFood
         },
     ]
 });
