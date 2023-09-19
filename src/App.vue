@@ -32,8 +32,10 @@ export default{
 @import "bootstrap/scss/bootstrap";
 @import './styles/generals.scss';
 
-body{
+//
+/*body{
     background-color: black;
     color: azure;
-}
+}*/
+
 </style>
