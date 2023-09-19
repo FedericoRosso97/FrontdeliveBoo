@@ -1,6 +1,6 @@
 <template>
     <div class="upper-header">
-        <img src="../assets/logo_deliveboo.png0" alt="DeliveBoo brand image">
+        <img src="../assets/logo_deliveboo.png" alt="DeliveBoo brand image">
     </div>
     <nav>
         <ul>
@@ -35,6 +35,19 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.upper-header{
+    background-color: #1695A6;
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+        img{
+                height: 100px;
+                margin-left:10rem;
+            }
+    }
+
+
 nav {
     width: 100%;
     display: flex;
