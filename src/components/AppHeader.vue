@@ -24,8 +24,8 @@ export default {
                     name: 'restaurant'
                 },
                 {
-                    route: 'edit',
-                    name: 'edit'
+                    route: 'menù',
+                    name: 'menù'
                 }
             ]
 

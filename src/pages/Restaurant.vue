@@ -1,11 +1,39 @@
 <template lang="">
     <div>
-        <h1>
-            Restaurant
-        </h1>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, doloribus sit. Eaque animi modi assumenda, sunt delectus fugit voluptatum natus eum expedita repellat dolore quam eveniet consectetur aperiam? Aspernatur, itaque!
-        </p>
+        <div class="title">
+            <h1>
+                Restaurant
+            </h1>
+        </div>
+
+        <h2>
+            Crea l'account del tuo Risporante
+        </h2>
+
+        <!--NOME-->
+        <div>
+            <label for="nome-attività">
+                Inserisci il nome del tuo Ristorante:
+            </label>
+            <input type="text">
+        </div>
+
+        <!--Indirizzo-->
+        <div>
+            <label for="indirizzo-attività">
+                Inserisci l'indirizzo del tuo Ristorante:
+            </label>
+            <input type="text">
+        </div>
+
+        <!--Telefono-->
+        <div>
+            <label for="Telefono-attività">
+                Inserisci il numero di telefono del tuo Ristorante:
+            </label>
+            <input type="text">
+        </div>
+
     </div>
 </template>
 
@@ -19,7 +47,7 @@ export default {
     data() {
         return {
             cards: [],
-            apiUrl : 'http://127.0.0.1:800/api/card',
+            apiUrl: 'http://127.0.0.1:800/api/card',
         }
     },
 
@@ -28,16 +56,16 @@ export default {
 
             axios.get(this.apiUrl, {
                 params: {
-                    
+
                 }
             })
-            .then((response) => {
-                console.log(response);
-                this.cards = response.data.result;
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+                .then((response) => {
+                    console.log(response);
+                    this.cards = response.data.result;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         }
     },
 
@@ -48,5 +76,5 @@ export default {
 </script>
 
 <style scoped lang="">
-    
+
 </style>
