@@ -11,13 +11,15 @@
 
 <script>
 import axios from 'axios';
+//import SingleRestaurant from '..componentiSingleRestaurant.vue';
+
 export default {
-    name: 'AppMain',
+    name: 'Restaurent',
 
     data() {
         return {
             cards: [],
-            apiUrl : ''
+            apiUrl : 'http://127.0.0.1:800/api/card',
         }
     },
 
@@ -29,8 +31,9 @@ export default {
                     
                 }
             })
-            .then(function (response) {
+            .then((response) => {
                 console.log(response);
+                this.cards = response.data.result;
             })
             .catch(function (error) {
                 console.log(error);
