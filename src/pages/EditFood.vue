@@ -1,11 +1,33 @@
 <template lang="">
     <div>
         <h1>
-            MENù
+            Modifica  Piatto
         </h1>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iste non sapiente cupiditate, similique quo ut delectus cum perspiciatis sed eligendi, mollitia, ratione adipisci! Qui ratione reiciendis excepturi molestias minus.
-        </p>
+        
+        <!--NOME Piatto-->
+        <div>
+            <label for="nome-Piatto">
+                Inserisci il nome del tuo Piatto:
+            </label>
+            <input type="text">
+        </div>
+
+        <!--DESCRIZIONE-->
+        <div>
+            <label for="descrizione">
+                Inserisci la descrizione del tuo piatto:
+            </label>
+            <input type="text">
+        </div>
+
+        <!--PREZZO-->
+        <div>
+            <label for="prezzo">
+                Inserisci il prezzo del tuo piatto:
+            </label>
+            <input type="text">
+        </div>
+    </div>
     </div>
 </template>
 <script>

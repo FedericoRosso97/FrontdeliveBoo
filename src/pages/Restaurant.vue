@@ -6,33 +6,42 @@
             </h1>
         </div>
 
-        <h2>
-            Crea l'account del tuo Risporante
+        <h2 class="ms-4 mt-4 mb-4">
+            Crea l'account del tuo Ristorante
         </h2>
 
-        <!--NOME-->
-        <div>
-            <label for="nome-attività">
-                Inserisci il nome del tuo Ristorante:
-            </label>
+        <div class="ms-5">
+            <!--NOME-->
+            <div class="mb-5">
+                <div class="mb-3">
+                    <label for="nome-attività">
+                        Inserisci il nome del tuo Ristorante:
+                    </label>
+                </div>
+                <input type="text">
+            </div>
+    
+            <!--Indirizzo-->
+            <div class="mb-5">
+                <div class="mb-3">
+                    <label for="indirizzo-attività">
+                        Inserisci l'indirizzo del tuo Ristorante:
+                    </label>
+                </div>
+                <input type="text">
+
+            </div>
+    
+            <!--Telefono-->
+            <div>
+                <label for="Telefono-attività">
+                    Inserisci il numero di telefono del tuo Ristorante:
+                </label>
+            </div>
             <input type="text">
+
         </div>
 
-        <!--Indirizzo-->
-        <div>
-            <label for="indirizzo-attività">
-                Inserisci l'indirizzo del tuo Ristorante:
-            </label>
-            <input type="text">
-        </div>
-
-        <!--Telefono-->
-        <div>
-            <label for="Telefono-attività">
-                Inserisci il numero di telefono del tuo Ristorante:
-            </label>
-            <input type="text">
-        </div>
 
     </div>
 </template>
