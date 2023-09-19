@@ -1,47 +1,8 @@
-<template lang="">
-    <div>
-        <h1>
-            Menu
-        </h1>
-
+<template>
+    <div class="type-restaurant-title">
         <h2>
-            Crea il menù per del tuo Risporante
+            Scegli dal menù:
         </h2>
-
-        <!--NOME Piatto-->
-        <div class="ms-5 mt-3">
-            <label for="nome-Piatto">
-                Inserisci il nome del tuo Piatto:
-            </label>
-            <input type="text">
-        </div>
-
-        <!--DESCRIZIONE-->
-        <div class="ms-5 mt-3">
-            <label for="descrizione">
-                Inserisci la descrizione del tuo piatto:
-            </label>
-            <input type="text">
-        </div>
-
-        <!--PREZZO-->
-        <div class="ms-5 mt-3"> 
-            <label for="prezzo">
-                Inserisci il prezzo del tuo piatto:
-            </label>
-            <input type="text">
-        </div>
-    </div>
-
-    <!--  bottoni
-    -->
-    <div class="ms-5 mt-3">
-        <button class="ms-5 mt-3">
-            Modifica piatto
-        </button>
-        <button class="ms-5 mt-3">
-                Aggiungi piatto
-        </button>
     </div>
 
 
@@ -54,6 +15,15 @@ export default {
 </script>
 
 
-<style lang="">
+<style scoped lang="scss">
+@use '../styles/partials/variables.scss' as *;
+
+div.type-restaurant-title {
+    margin-top: 10rem;
+
+    h2 {
+        text-align: center;
+    }
+}
 
 </style>

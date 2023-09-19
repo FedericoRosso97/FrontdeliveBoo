@@ -32,7 +32,7 @@ export default {
             links: [
                 {
                     route: 'restaurant',
-                    name: 'restaurant'
+                    name: 'restaurant',
                 },
                 {
                     route: 'menù',
@@ -54,7 +54,7 @@ export default {
     align-items: center;
 
     img {
-        height: 100px;
+        height: 200px;
         margin-left: 10rem;
     }
 }
