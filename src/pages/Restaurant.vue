@@ -56,7 +56,7 @@ export default {
     data() {
         return {
             cards: [],
-            apiUrl: 'http://127.0.0.1:800/api/card',
+            apiUrl: 'http://127.0.0.1:800/api/restaurant',
         }
     },
 
