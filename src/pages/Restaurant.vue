@@ -8,11 +8,15 @@
     <!--RESTAURANT TYPE-->
     <div class="restourant-types">
         <ul>
-            <li v-for="typology in typologies">
-                <h3>
-                    {{ typology.name }}
-                </h3>
-            </li>
+            <li>italiano </li>
+            <li>internazionale</li>
+            <li>cinese</li>
+            <li>giapponese</li>
+            <li>messicano</li>
+            <li>indiano</li>
+            <li>pesce</li>
+            <li>carne</li>
+            <li>pizza</li>
         </ul>
     </div>
 </template>
@@ -78,6 +82,7 @@ div.restourant-types {
             padding: 1rem 0;
             border-radius: 1rem;
             border: 2px solid $LightBlueColor;
+            color: white;
 
             h3 {
                 color: white;

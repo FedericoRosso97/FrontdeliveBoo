@@ -21,11 +21,6 @@ const router = createRouter({
             name: 'menù', 
             component: Menù
         },
-        {
-            path: '/editfood',
-            name: 'editfood', 
-            component: EditFood
-        },
     ]
 });
 
