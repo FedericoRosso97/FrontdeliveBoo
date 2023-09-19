@@ -4,14 +4,9 @@
     </div>
     <nav>
         <ul>
-            <li>
-                <router-link :to="{ name: 'restaurant' }">
-                    Restaurant
-                </router-link>
-            </li>
-            <li>
-                <router-link :to="{ name: 'edit' }">
-                    Edit
+            <li v-for="link in links">
+                <router-link :to="{ name: link.route }">
+                    {{ link.name }}
                 </router-link>
             </li>
         </ul>
@@ -20,8 +15,23 @@
 
 <script>
 export default {
-    name: 'AppHeader'
-}
+    name: 'AppHeader',
+    data() {
+        return {
+            links : [
+                {
+                    route: 'restaurant',
+                    name: 'restaurant'
+                },
+                {
+                    route: 'edit',
+                    name: 'edit'
+                }
+            ]
+
+            }
+        }
+    }
 </script>
 
 <style scoped lang="scss">
