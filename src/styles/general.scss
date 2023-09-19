@@ -1,3 +1,8 @@
 @use './partials/variables' as *;
 @use './partials/mixins' as *;
 
+nav.navbar{
+    background-color: yellow;
+}
+
+
