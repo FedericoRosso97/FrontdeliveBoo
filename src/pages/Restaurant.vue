@@ -8,15 +8,11 @@
     <!--RESTAURANT TYPE-->
     <div class="restourant-types">
         <ul>
-            <li>italiano </li>
-            <li>internazionale</li>
-            <li>cinese</li>
-            <li>giapponese</li>
-            <li>messicano</li>
-            <li>indiano</li>
-            <li>pesce</li>
-            <li>carne</li>
-            <li>pizza</li>
+            <li v-for="typology in typologies">
+                <h3>
+                    {{ typology.name }}
+                </h3>
+            </li>
         </ul>
     </div>
 </template>
@@ -31,7 +27,35 @@ export default {
         return {
             store,
             typologyApiUrl: 'http://127.0.0.1:8000/api/typology',
-            typologies: [],
+            typologies: [
+                {
+                    name:'italiano'
+                },
+                {
+                    name:'internazionale'
+                },
+                {
+                    name:'cinese'
+                },
+                {
+                    name:'giapponese'
+                },
+                {
+                    name:'messicano'
+                },
+                {
+                    name:'indiano'
+                },
+                {
+                    name:'pesce'
+                },
+                {
+                    name:'carne'
+                },
+                {
+                    name:'pizza'
+                },
+            ],
         }
     },
     methods: {
