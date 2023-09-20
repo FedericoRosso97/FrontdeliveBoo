@@ -1,8 +1,8 @@
 <template>
     <div class="type-restaurant-title">
-        <h4>
+        <h2>
             Scegli dal menù:
-        </h4>
+        </h2>
     </div>
 
     <!--CHOOSE FROM THE MENù-->
