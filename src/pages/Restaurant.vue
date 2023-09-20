@@ -8,7 +8,7 @@
     <!--RESTAURANT TYPE-->
     <div class="restourant-types">
         <ul>
-            <li v-for="typology in typologies">
+            <li v-for="restaurant in restaurants">
                 <h3>
                     {{ restaurant.name }}
                 </h3>
