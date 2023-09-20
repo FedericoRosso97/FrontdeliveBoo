@@ -10,7 +10,7 @@
         <ul>
             <li v-for="typology in typologies">
                 <h3>
-                    {{ typology.name }}
+                    {{ restaurant.name }}
                 </h3>
             </li>
         </ul>
@@ -27,34 +27,9 @@ export default {
         return {
             store,
             typologyApiUrl: 'http://127.0.0.1:8000/api/restaurant',
-            typologies: [
-                {
-                    name:'italiano'
-                },
-                {
-                    name:'internazionale'
-                },
-                {
-                    name:'cinese'
-                },
-                {
-                    name:'giapponese'
-                },
-                {
-                    name:'messicano'
-                },
-                {
-                    name:'indiano'
-                },
-                {
-                    name:'pesce'
-                },
-                {
-                    name:'carne'
-                },
-                {
-                    name:'pizza'
-                },
+            restaurants: [
+
+              
             ],
         }
     },
@@ -65,8 +40,8 @@ export default {
                 }
             })
                 .then((response) => {
-                    this.typologies = response.data.result;
-                    console.log(this.typologies);
+                    this.restaurants= response.data.result;
+                    console.log(this.restaurants);
                 })
                 .catch(function (error) {
                     console.log(error);
