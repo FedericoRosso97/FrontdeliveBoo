@@ -34,13 +34,14 @@ export default {
         }
     },
     methods: {
-        getTypology() {
+        getRestaurant() {
             axios.get(this.restaurantApiUrl, {
                 params: {
                 }
             })
                 .then((response) => {
                     this.restaurants= response.data.result;
+                    console.log(response);
                     console.log(this.restaurants);
                 })
                 .catch(function (error) {
@@ -48,6 +49,10 @@ export default {
                 })
         }
     },
+    
+    mounted(){
+        this.getRestaurant();
+    }
 
 }
 </script>
