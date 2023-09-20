@@ -26,7 +26,7 @@ export default {
     data() {
         return {
             store,
-            typologyApiUrl: 'http://127.0.0.1:8000/api/restaurant',
+            restaurantApiUrl: 'http://127.0.0.1:8000/api/restaurant',
             restaurants: [
 
               
@@ -35,7 +35,7 @@ export default {
     },
     methods: {
         getTypology() {
-            axios.get(this.typologyApiUrl, {
+            axios.get(this.restaurantApiUrl, {
                 params: {
                 }
             })
