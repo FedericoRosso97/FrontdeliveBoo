@@ -5,23 +5,29 @@
             <i class="fa-solid fa-magnifying-glass"></i>
         </button>
     </form>
-    <div class="advanced-sideBar">
-        <ul>
-            <li v-for="typology in typologies">
-                <button>
-                    {{ typology.name }}
-                </button>
-            </li>
-        </ul>
-    </div>
-    <div class="advanced-results">
-        <h1>
-            AdvancedSearch:
-        </h1>
-        <span>
-            {{ $route.params.input }}
-        </span>
-    </div>
+    <section class="advanced-searchbar">
+        <div class="advanced-sidebar">
+            <h4>
+                Cerca per tipologia:
+            </h4>
+            <ul>
+                <li v-for="typology in typologies">
+                    <button>
+                        {{ typology.name }}
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div class="advanced-results">
+            <ul>
+                <li>
+                    <h1>
+                        {{ restaurants.name }}
+                    </h1>
+                </li>
+            </ul>
+        </div>
+    </section>
 </template>
 
 <script>
@@ -34,7 +40,10 @@ export default {
         return{
             store,
             typologyApiUrl: 'http://127.0.0.1:8000/api/typology',
-            typologies: [],    
+            restaurantApiUrl: 'http://127.0.0.1:8000/api/restaurant',
+            typologies: [],
+            restaurants: [],
+            searchInput: '',    
         }
     },
     methods:{
@@ -45,22 +54,43 @@ export default {
             })
                 .then( (response) => {
                     this.typologies = response.data.result;
-                    console.log(this.typologies);
+                    // console.log(this.typologies);
                  })
                 .catch(function (error) {
                     console.log(error);
                 })
+        },
+        getRestaurant(needle){
+            axios.get(this.restaurantApiUrl, {
+                params: {
+                    query: needle,
+                }
+            })
+                .then( (response) => {
+                    this.restaurants = response.data.result;
+                    // console.log(this.restaurants);
+                 })
+                .catch(function (error) {
+                    console.log(error);
+                })
+        },
+        setFirstSearch(){
+            this.searchInput = this.$route.params.input;
         }
     },
     mounted(){
         // this.input = this.store.inputSearch;
+        console.log(this.$route.params.input);
+        this.setFirstSearch()
         this.getTypology();
+        this.getRestaurant(this.searchInput);
         this.store.searchBar = false;
     }
 }
 </script>
 
 <style scoped lang="scss">
+@use '../styles/partials/variables.scss' as *;
     form.advanced-searchbar{
         z-index: 1;
         position: absolute;
@@ -81,6 +111,36 @@ export default {
             background-color: white;
             border-top-right-radius: 0.4rem;
             border-bottom-right-radius: 0.4rem;
+        }
+    }
+    section.advanced-searchbar{
+        width: 100%;
+        height: calc(100vh - 10vh);
+        display: flex;
+        div.advanced-sidebar{
+            width: 13vw;
+            background-color: $YellowColor;
+            h4{
+                text-align: center;
+                margin-top: 1.5rem;
+            }
+            ul{
+                list-style-type: none;
+                width: 100%;
+                padding-left: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                button{
+                    background-color: $LightBlueColor;
+                    color: white;
+                    margin-top: 1rem;
+                    width: 150px;
+                    padding: 0.3rem 0;
+                    border: 1px solid $BlueColor;
+                    border-radius: 0.3rem;
+                }
+            }
         }
     }
 </style>

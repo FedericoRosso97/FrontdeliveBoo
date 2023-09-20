@@ -65,7 +65,7 @@ export default {
         changeAdvancedSrc(input){
             this.$router.push({
                 name: 'AdvancedSearch',
-                params:{
+                props:{
                     input: input
                 }
             });
