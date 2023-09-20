@@ -26,7 +26,7 @@ export default {
     data() {
         return {
             store,
-            typologyApiUrl: 'http://127.0.0.1:8000/api/typology',
+            typologyApiUrl: 'http://127.0.0.1:8000/api/restaurant',
             typologies: [
                 {
                     name:'italiano'
