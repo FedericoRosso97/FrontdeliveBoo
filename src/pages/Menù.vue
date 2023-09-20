@@ -8,9 +8,9 @@
     <!--CHOOSE FROM THE MENù-->
     <div class="restourant-types">
         <ul>
-            <li v-for="plate in plates">
+            <li v-for="(plate,index) in plates">
                 <h3>
-                    {{ plate.name }}
+                    {{ plate.name}}
                 </h3>
             </li>
         </ul>
@@ -40,7 +40,8 @@ export default {
                 }
             })
                 .then((response) => {
-                    this.plates = response.data.result;
+                    console.log(response)
+                    this.plates = response.data.results.data;
                     console.log(this.plates);
                 })
                 .catch(function (error) {
