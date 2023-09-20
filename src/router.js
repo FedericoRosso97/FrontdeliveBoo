@@ -1,9 +1,10 @@
 import { createRouter,createWebHistory} from 'vue-router';
 
 import AppHome from './pages/AppHome.vue';
+import AdvancedSearch from './pages/AdvancedSearch.vue';
 // import LoginForm from './pages/LoginForm.vue';
 // import RegistrationForm from './pages/RegistrationForm.vue';
-import DashboardApp from './pages/DashboardApp.vue';
+// import DashboardApp from './pages/DashboardApp.vue';
 
 const router = createRouter({
     history:createWebHistory(),
@@ -14,10 +15,16 @@ const router = createRouter({
             component: AppHome
         },
         {
-            path: '/dashboard',
-            name: 'dashboard', 
-            component: DashboardApp
+            path: '/advancedSearch/:input',
+            name: 'AdvancedSearch', 
+            component: AdvancedSearch,
+            props: true
         },
+        // {
+        //     path: '/dashboard',
+        //     name: 'dashboard', 
+        //     component: DashboardApp
+        // },
         // {
         //     path: '/login',
         //     name: 'login', 

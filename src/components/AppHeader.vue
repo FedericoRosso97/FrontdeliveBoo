@@ -1,11 +1,12 @@
 <template>
     <header :class="(store.searchBar === true)? 'home-start' : 'home-small'">
+        
         <div class="upper-header">
 
             <!-- LOGO -->
 
             <img src="../assets/logo_deliveboo.png" alt="DeliveBoo brand image">
-
+            
             <!-- LOG IN / REGISTRAZIONE -->
         
             <div class="logIn">
@@ -35,12 +36,16 @@
                 <h1>
                     Cosa vuoi mangiare?
                 </h1>
-                <form action="" method="GET">
-                    <input type="text" placeholder="Cerca tra centinaia di piatti e ristoranti!">
-                    <button type="submit">
+                
+                <form method="GET">
+                    <input type="text" placeholder="Cerca tra centinaia di piatti e ristoranti!" v-model="inputSearch" @keyup.enter="changeAdvancedSrc(inputSearch)">
+                    <button @click="changeAdvancedSrc(inputSearch)">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </form>
+                <!-- <router-link :to="{ name: 'AdvancedSearch' }">
+                    Test
+                </router-link> -->
             </div>
         </div>
     </header>
@@ -55,6 +60,19 @@ export default {
         return{
             store,
         }
+    },
+    methods:{
+        changeAdvancedSrc(input){
+            this.$router.push({
+                name: 'AdvancedSearch',
+                params:{
+                    input: input
+                }
+            });
+        }
+    },
+    mounted(){
+        // console.log(store.inputSearch)
     }
 }
 </script>

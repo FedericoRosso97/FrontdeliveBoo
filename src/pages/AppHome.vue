@@ -36,7 +36,7 @@ import axios from 'axios';
                 })
                     .then( (response) => {
                         this.typologies = response.data.result;
-                        console.log(this.typologies);
+                        // console.log(this.typologies);
                      })
                     .catch(function (error) {
                         console.log(error);
