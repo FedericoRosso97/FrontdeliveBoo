@@ -5,8 +5,8 @@
 
             <!-- LOGO -->
 
-            <img src="../assets/logo_deliveboo.png" alt="DeliveBoo brand image">
-            
+            <img src="../assets/logo_deliveboo.png" alt="DeliveBoo brand image">            
+
             <!-- LOG IN / REGISTRAZIONE -->
         
             <div class="logIn">
@@ -65,7 +65,7 @@ export default {
         changeAdvancedSrc(input){
             this.$router.push({
                 name: 'AdvancedSearch',
-                props:{
+                params:{
                     input: input
                 }
             });

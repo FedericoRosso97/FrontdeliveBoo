@@ -20,10 +20,15 @@
         </div>
         <div class="advanced-results">
             <ul>
-                <li>
-                    <h1>
-                        {{ restaurants.name }}
-                    </h1>
+                <li v-for="restaurant in restaurants">
+                    <div v-if="searchElement(restaurant)">
+                        <h1>
+                            {{ restaurant.name }}
+                        </h1>
+                        <p>
+                            {{ restaurant.address }}
+                        </p>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -60,10 +65,9 @@ export default {
                     console.log(error);
                 })
         },
-        getRestaurant(needle){
+        getRestaurant(){
             axios.get(this.restaurantApiUrl, {
                 params: {
-                    query: needle,
                 }
             })
                 .then( (response) => {
@@ -74,16 +78,26 @@ export default {
                     console.log(error);
                 })
         },
+        searchElement(element){
+            console.log(this.searchInput);
+            if(this.searchInput === '' ){
+                return true;
+            }else{
+                if(element.name.toLowerCase().includes(this.searchInput.toLowerCase())){
+                return true;
+                }
+            return false;
+            }
+        },  
         setFirstSearch(){
             this.searchInput = this.$route.params.input;
         }
     },
     mounted(){
         // this.input = this.store.inputSearch;
-        console.log(this.$route.params.input);
-        this.setFirstSearch()
+        this.setFirstSearch();
         this.getTypology();
-        this.getRestaurant(this.searchInput);
+        this.getRestaurant();
         this.store.searchBar = false;
     }
 }
