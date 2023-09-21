@@ -1,13 +1,8 @@
 import {reactive} from 'vue';
 
 export const store = reactive({
-<<<<<<< HEAD
+    menuRestaurant: false,
     searchBar : true,
     advancedSearch : false,
 });
-=======
-    logIn : true,
-    searchBar : true,
-    advancedSearch : false,
-});
->>>>>>> Menù-branch
+

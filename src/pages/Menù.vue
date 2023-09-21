@@ -51,7 +51,7 @@ export default {
     },
 
     mounted(){
-            store.searchBar = true;
+            this.store.menuRestaurant = true;
             this.getPlates();
         }
 }

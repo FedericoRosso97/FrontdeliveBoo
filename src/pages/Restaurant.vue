@@ -50,6 +50,8 @@ export default {
     },
     
     mounted(){
+        this.store.menuRestaurant = true;
+        this.store.searchBar = false;
         this.getRestaurant();
     }
 

@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
     <header :class="(store.searchBar === true)? 'home-start' : 'home-small'">
         
         <div class="upper-header">
@@ -49,6 +48,25 @@
                 </router-link> -->
             </div>
         </div>
+
+        <div class="lower-header" v-if="this.store.menuRestaurant === true">
+            <div class="searchBar">
+                <div class="choose-box">
+                    <h1>
+                        Cosa vuoi vedere?
+                    </h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li v-for="link in links">
+                            <router-link :to="{ name: link.route }">
+                            {{ link.name }}
+                            </router-link>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </header>
 </template>
 
@@ -60,7 +78,17 @@ export default {
     data(){
         return{
             store,
-        }
+            links: [
+                {
+                    route: 'restaurant',
+                    name: 'restaurant',
+                },
+                {
+                    route: 'menù',
+                    name: 'menù'
+                },
+            ]
+        }        
     },
     methods:{
         changeAdvancedSrc(input){
@@ -74,56 +102,11 @@ export default {
     },
     mounted(){
         // console.log(store.inputSearch)
-=======
-    <div class="upper-header">
-        <img src="../assets/logo_deliveboo.png" alt="DeliveBoo brand image">
-    </div>
-
-    <div class="lower-header">
-        <div class="searchBar">
-            <div class="choose-box">
-                <h1>
-                    Cosa vuoi vedere?
-                </h1>
-            </div>
-
-            <nav>
-                <ul>
-                    <li v-for="link in links">
-                        <router-link :to="{ name: link.route }">
-                            {{ link.name }}
-                        </router-link>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-</template>
-
-<script>
-export default {
-    name: 'AppHeader',
-    data() {
-        return {
-            links: [
-                {
-                    route: 'restaurant',
-                    name: 'restaurant',
-                },
-                {
-                    route: 'menù',
-                    name: 'menù'
-                },
-            ]
-
-        }
->>>>>>> Menù-branch
     }
 }
 </script>
 
 <style scoped lang="scss">
-<<<<<<< HEAD
     @use '../styles/partials/variables.scss' as *;
     header.home-small,
     header.home-start{
@@ -206,7 +189,6 @@ export default {
             }
         }
     }
-=======
 .upper-header {
     background-color: #1695A6;
     height: 150px;
@@ -268,5 +250,4 @@ li {
     top: 200px;
     text-align: center;
 }
->>>>>>> Menù-branch
 </style>
