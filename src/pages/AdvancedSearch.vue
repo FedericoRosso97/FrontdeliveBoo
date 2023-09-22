@@ -1,7 +1,7 @@
 <template>
     <form method="GET" class="advanced-searchbar">
-        <input type="text" placeholder="Cerca tra centinaia di piatti e ristoranti!" v-model="inputSearch" @keyup.enter="">
-        <button @click="">
+        <input type="text" placeholder="Cerca tra centinaia di piatti e ristoranti!" v-model="searchInput">
+        <button>
             <i class="fa-solid fa-magnifying-glass"></i>
         </button>
     </form>
@@ -19,18 +19,34 @@
             </ul>
         </div>
         <div class="advanced-results">
-            <ul>
-                <li v-for="restaurant in restaurants">
-                    <div v-if="searchElement(restaurant)">
+            <div class="card-container" v-for="(restaurant,index) in restaurants">
+                <div v-if="searchElement(restaurant)" :class="(searchElement(restaurant) === true)? 'find' : '' ">
+                    <div class="info-restaurant">
                         <h1>
-                            {{ restaurant.name }}
+                            {{ restaurant.name }} {{ index = index + 1 }}
                         </h1>
+                        <img :src="restaurant.image" alt="">
                         <p>
-                            {{ restaurant.address }}
+                            <strong>Address:</strong> {{ restaurant.address }}
+                        </p>
+                        <p>
+                            <strong>Mail:</strong> {{ restaurant.email }}
+                        </p>
+                        <p>
+                            <i class="fa-solid fa-clock"></i>
+                            {{ restaurant.opening_time }}
+                        </p>
+                        <p>
+                            <strong>Phone:</strong> {{ restaurant.telephone_number }}
                         </p>
                     </div>
-                </li>
-            </ul>
+                    <div class="buttons">
+                        <a class="btn btn-primary" href="">
+                            Guarda il menù
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </template>
@@ -84,7 +100,7 @@ export default {
                 return true;
             }else{
                 if(element.name.toLowerCase().includes(this.searchInput.toLowerCase())){
-                return true;
+                    return true;
                 }
             return false;
             }
@@ -155,6 +171,33 @@ export default {
                     border-radius: 0.3rem;
                 }
             }
+        }
+    }
+    div.advanced-results{
+        width: 100%;
+        height: 90vh;
+        overflow-y: auto;
+        display: flex;
+        flex-wrap: wrap;
+        div.card-container{
+                div.find{
+                    width: calc(100% - 3rem);
+                    margin: 1.5rem;
+                    background-color: $BlueColor;
+                    color: white;
+                    padding: 1rem;
+                    position: relative;
+                    div.buttons{
+                        a{
+                            position: absolute;
+                            right: 40px;
+                            bottom: 70px;
+                        }
+                    }
+                    img{
+                        width: 100%;
+                    }
+                }
         }
     }
 </style>
