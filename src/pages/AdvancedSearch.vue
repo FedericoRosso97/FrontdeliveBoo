@@ -46,8 +46,13 @@ export default {
             store,
             typologyApiUrl: 'http://127.0.0.1:8000/api/typology',
             restaurantApiUrl: 'http://127.0.0.1:8000/api/restaurant',
+
+            //Api ai menù dello specifico ristorante
+
             typologies: [],
             restaurants: [],
+
+            //Array vuoto
             searchInput: '',    
         }
     },

@@ -15,9 +15,9 @@
                 </li>
 
                 <li>
-                    <a href="">
+                    <router-link :to="{ name: 'menù' }">
                         Menù
-                    </a>
+                    </router-link>
                 </li>
 
                 <li>
