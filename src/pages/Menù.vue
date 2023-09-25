@@ -8,12 +8,21 @@
     <!--CHOOSE FROM THE MENù-->
     <div class="restourant-types">
         <ul>
-            <li v-for="(plate,index) in plates">
+            <li v-for="(plate, index) in plates">
+                <!--Menù del singolo ristorante-->
                 <h3>
-                    {{ plate.name}}
+                    {{ plate.name }}
                 </h3>
+                <!--H3 deve essere cliccabile e portare alla show che è la card con le info su cosa aggiungere-->
             </li>
         </ul>
+        <!--Mi porta alla show del singolo piatto
+            <div class="card-body m-auto">
+                <a href="{{ route ('plates.show', $plate->id)}}" class="card-link ">
+                    show information
+                </a>
+            </div>
+        -->
     </div>
 </template>
 
@@ -50,10 +59,10 @@ export default {
         }
     },
 
-    mounted(){
-            this.store.menuRestaurant = true;
-            this.getPlates();
-        }
+    mounted() {
+        this.store.menuRestaurant = true;
+        this.getPlates();
+    }
 }
 </script>
 
