@@ -44,8 +44,8 @@ export default {
     data(){
         return{
             store,
-            typologyApiUrl: 'http://127.0.0.1:8000/api/typology',
-            restaurantApiUrl: 'http://127.0.0.1:8000/api/restaurant',
+            typologyApiUrl: 'http://127.0.0.1:8000/api/typologies',
+            restaurantApiUrl: 'http://127.0.0.1:8000/api/restaurants',
 
             //Api ai menù dello specifico ristorante
 

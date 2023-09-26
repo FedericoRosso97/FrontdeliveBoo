@@ -27,7 +27,7 @@ export default {
     data() {
         return {
             store,
-            restaurantApiUrl: 'http://127.0.0.1:8000/api/restaurant',
+            restaurantApiUrl: 'http://127.0.0.1:8000/api/restaurants',
             restaurants: [],
         }
     },
