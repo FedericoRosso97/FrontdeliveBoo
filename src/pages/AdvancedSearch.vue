@@ -1,7 +1,7 @@
 <template>
     <form method="GET" class="advanced-searchbar">
-        <input type="text" placeholder="Cerca tra centinaia di piatti e ristoranti!" v-model="inputSearch" @keyup.enter="">
-        <button @click="">
+        <input type="text" placeholder="Cerca tra centinaia di piatti e ristoranti!" v-model="searchInput">
+        <button>
             <i class="fa-solid fa-magnifying-glass"></i>
         </button>
     </form>
@@ -11,26 +11,42 @@
                 Cerca per tipologia:
             </h4>
             <ul>
-                <li v-for="typology in typologies">
-                    <button>
+                <li v-for="(typology,index) in typologies">
+                    <button @click="filterByTypology(index)">
                         {{ typology.name }}
                     </button>
                 </li>
             </ul>
         </div>
         <div class="advanced-results">
-            <ul>
-                <li v-for="restaurant in restaurants">
-                    <div v-if="searchElement(restaurant)">
+            <div class="card-container" v-for="(restaurant,index) in restaurants">
+                <div v-if="searchElement(restaurant)" :class="(searchElement(restaurant) === true)? 'find' : '' ">
+                    <div class="info-restaurant">
                         <h1>
-                            {{ restaurant.name }}
+                            {{ restaurant.name }} {{ index = index + 1 }}
                         </h1>
+                        <img :src="restaurant.image" alt="">
                         <p>
-                            {{ restaurant.address }}
+                            <strong>Address:</strong> {{ restaurant.address }}
+                        </p>
+                        <p>
+                            <strong>Mail:</strong> {{ restaurant.email }}
+                        </p>
+                        <p>
+                            <i class="fa-solid fa-clock"></i>
+                            {{ restaurant.opening_time }}
+                        </p>
+                        <p>
+                            <strong>Phone:</strong> {{ restaurant.telephone_number }}
                         </p>
                     </div>
-                </li>
-            </ul>
+                    <div class="buttons">
+                        <a class="btn btn-primary" href="">
+                            Guarda il menù
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </template>
@@ -44,11 +60,14 @@ export default {
     data(){
         return{
             store,
-            typologyApiUrl: 'http://127.0.0.1:8000/api/typology',
+            typologyApiUrl: 'http://127.0.0.1:8000/api/typologies',
             restaurantApiUrl: 'http://127.0.0.1:8000/api/restaurant',
+            restaurantTypologyUrl: 'http://127.0.0.1:8000/api/type_restaurant',
             typologies: [],
             restaurants: [],
-            searchInput: '',    
+            type_restaurant:[],
+            searchInput: '',
+            typeId: 0,    
         }
     },
     methods:{
@@ -58,6 +77,7 @@ export default {
                 }
             })
                 .then( (response) => {
+                    console.log(response);
                     this.typologies = response.data.result;
                     // console.log(this.typologies);
                  })
@@ -78,27 +98,54 @@ export default {
                     console.log(error);
                 })
         },
+        getRestourantType(){
+            axios.get(this.restaurantTypologyUrl, {
+                params: {
+                }
+            })
+                .then( (response) => {
+                    this.type_restaurant = response.data.result;
+                    console.log(this.type_restaurant);
+                 })
+                .catch(function (error) {
+                    console.log(error);
+                })
+        },
         searchElement(element){
             console.log(this.searchInput);
-            if(this.searchInput === '' ){
+            if(this.searchInput === '' || this.searchInput === 'Cerca tra centinaia di piatti e ristoranti'){
                 return true;
             }else{
                 if(element.name.toLowerCase().includes(this.searchInput.toLowerCase())){
-                return true;
+                    return true;
                 }
             return false;
             }
+        },
+
+        filterByTypology(type){
+            console.log('helo');
+            console.log(this.restaurants);
+            this.type_restaurant.forEach((restaurant) => {
+                console.log(restaurant.name + ' : ' + restaurant.id)
+                if(type === 0){
+    
+                }
+            });
+            
         },  
         setFirstSearch(){
             this.searchInput = this.$route.params.input;
         }
     },
     mounted(){
-        // this.input = this.store.inputSearch;
+        // console.log(this.store.selectedType);
+        this.store.searchBar = false;
         this.setFirstSearch();
         this.getTypology();
         this.getRestaurant();
-        this.store.searchBar = false;
+        this.getRestourantType();
+        // this.filterByTypology(this.store.selectedType);
     }
 }
 </script>
@@ -155,6 +202,33 @@ export default {
                     border-radius: 0.3rem;
                 }
             }
+        }
+    }
+    div.advanced-results{
+        width: 100%;
+        height: 90vh;
+        overflow-y: auto;
+        display: flex;
+        flex-wrap: wrap;
+        div.card-container{
+                div.find{
+                    width: calc(100% - 3rem);
+                    margin: 1.5rem;
+                    background-color: $BlueColor;
+                    color: white;
+                    padding: 1rem;
+                    position: relative;
+                    div.buttons{
+                        a{
+                            position: absolute;
+                            right: 40px;
+                            bottom: 70px;
+                        }
+                    }
+                    img{
+                        width: 100%;
+                    }
+                }
         }
     }
 </style>
