@@ -6,6 +6,8 @@
         </button>
     </form>
     <section class="advanced-searchbar">
+
+        <!-- LISTA DI TIPOLOGIE DA CUI SCEGLIERE -->
         <div class="advanced-sidebar">
             <h4>
                 Cerca per tipologia:
@@ -18,6 +20,8 @@
                 </li>
             </ul>
         </div>
+
+        <!-- LISTA DEI RISTORANTI -->
         <div class="advanced-results">
             <div class="card-container" v-for="restaurant in restaurants">
                 <div v-if="searchElement(restaurant) && filterByTypology(restaurant.typologies[0].id)" :class="(searchElement(restaurant) === true)? 'find' : 'no-result' ">
@@ -44,7 +48,7 @@
                         </p>
                     </div>
                     <div class="buttons">
-                        <router-link class="btn btn-primary" :to="{ name: 'menù', params: {restaurantId: restaurant.id} }">
+                        <router-link class="btn btn-primary" :to="{ name: 'menù', params: {platesList: restaurant.plates } }">
                             Guarda il menù
                         </router-link>
                     </div>
@@ -65,7 +69,6 @@ export default {
             store,
             typologyApiUrl: 'http://127.0.0.1:8000/api/typologies',
             restaurantApiUrl: 'http://127.0.0.1:8000/api/restaurant',
-            // restaurantTypologyUrl: 'http://127.0.0.1:8000/api/type_restaurant',
             typologies: [],
             restaurants: [],
             type_restaurant:[],
@@ -74,13 +77,14 @@ export default {
         }
     },
     methods:{
+
+        // PRENDE LE TIPOLOGIE VIA API
         getTypology(){
             axios.get(this.typologyApiUrl, {
                 params: {
                 }
             })
                 .then( (response) => {
-                    // console.log(response);
                     this.typologies = response.data.result;
                     // console.log(this.typologies);
                  })
@@ -88,6 +92,8 @@ export default {
                     console.log(error);
                 })
         },
+
+        // PRENDE I RISTORANTI VIA API
         getRestaurant(){
             axios.get(this.restaurantApiUrl, {
                 params: {
@@ -95,27 +101,15 @@ export default {
             })
                 .then( (response) => {
                     this.restaurants = response.data.result.data;
-                    console.log(this.restaurants);
+                    // console.log(this.restaurants);
                  })
                 .catch(function (error) {
                     console.log(error);
                 })
         },
-        // getRestourantType(){
-        //     axios.get(this.restaurantTypologyUrl, {
-        //         params: {
-        //         }
-        //     })
-        //         .then( (response) => {
-        //             this.type_restaurant = response.data.result;
-        //             // console.log(this.type_restaurant);
-        //          })
-        //         .catch(function (error) {
-        //             console.log(error);
-        //         })
-        // },
+
+        // FILTRA I RISTORANTI PER NOME
         searchElement(element){
-            // console.log(element);
             if(this.searchInput === '' || this.searchInput === 'Cerca tra centinaia di piatti e ristoranti'){
                 return true;
             }else{
@@ -126,6 +120,7 @@ export default {
             }
         },
 
+        // FILTRA I RISTORANTI PER TIPOLOGIA
         filterByTypology(type){
             if(this.typeSelected === 0){
                 return true;
@@ -135,22 +130,23 @@ export default {
             }
             return false;
         },  
+
+        // IMPOSTA LA PRIMA RICERCA, SE PRESENTE
         setFirstSearch(){
             this.searchInput = this.$route.params.input;
         },
+
+        // IMPOSTA LA PRIMA TIPOLOGIA, SE PRESENTE
         setFirstType(){
             this.typeSelected = this.store.FirstselectedType; 
         }
     },
     mounted(){
-        // console.log(this.store.selectedType);
         this.store.searchBar = false;
         this.setFirstSearch();
         this.setFirstType();
         this.getTypology();
         this.getRestaurant();
-        // this.getRestourantType();
-        // this.filterByTypology(this.store.selectedType);
     }
 }
 </script>
