@@ -12,7 +12,7 @@
             </h4>
             <ul>
                 <li v-for="(typology,index) in typologies">
-                    <button>
+                    <button @click="filterByTypology(index)">
                         {{ typology.name }}
                     </button>
                 </li>
@@ -62,8 +62,10 @@ export default {
             store,
             typologyApiUrl: 'http://127.0.0.1:8000/api/typologies',
             restaurantApiUrl: 'http://127.0.0.1:8000/api/restaurant',
+            restaurantTypologyUrl: 'http://127.0.0.1:8000/api/type_restaurant',
             typologies: [],
             restaurants: [],
+            type_restaurant:[],
             searchInput: '',
             typeId: 0,    
         }
@@ -77,7 +79,7 @@ export default {
                 .then( (response) => {
                     console.log(response);
                     this.typologies = response.data.result;
-                    console.log(this.typologies);
+                    // console.log(this.typologies);
                  })
                 .catch(function (error) {
                     console.log(error);
@@ -90,7 +92,20 @@ export default {
             })
                 .then( (response) => {
                     this.restaurants = response.data.result;
-                    console.log(this.restaurants);
+                    // console.log(this.restaurants);
+                 })
+                .catch(function (error) {
+                    console.log(error);
+                })
+        },
+        getRestourantType(){
+            axios.get(this.restaurantTypologyUrl, {
+                params: {
+                }
+            })
+                .then( (response) => {
+                    this.type_restaurant = response.data.result;
+                    console.log(this.type_restaurant);
                  })
                 .catch(function (error) {
                     console.log(error);
@@ -106,17 +121,31 @@ export default {
                 }
             return false;
             }
+        },
+
+        filterByTypology(type){
+            console.log('helo');
+            console.log(this.restaurants);
+            this.type_restaurant.forEach((restaurant) => {
+                console.log(restaurant.name + ' : ' + restaurant.id)
+                if(type === 0){
+    
+                }
+            });
+            
         },  
         setFirstSearch(){
             this.searchInput = this.$route.params.input;
         }
     },
     mounted(){
-        console.log(this.store.selectedType);
+        // console.log(this.store.selectedType);
+        this.store.searchBar = false;
         this.setFirstSearch();
         this.getTypology();
         this.getRestaurant();
-        this.store.searchBar = false;
+        this.getRestourantType();
+        // this.filterByTypology(this.store.selectedType);
     }
 }
 </script>
