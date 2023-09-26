@@ -126,7 +126,7 @@ export default {
         filterByTypology(type){
             console.log('helo');
             console.log(this.restaurants);
-            this.type_restaurant.forEach((restaurant) => {
+            this.type_restaurant.forEach((element) => {
                 console.log(restaurant.name + ' : ' + restaurant.id)
                 if(type === 0){
     
