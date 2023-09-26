@@ -20,7 +20,7 @@
         </div>
         <div class="advanced-results">
             <div class="card-container" v-for="restaurant in restaurants">
-                <div v-if="searchElement(restaurant) && filterByTypology(restaurant.typologies[0].id)" :class="(searchElement(restaurant) === true)? 'find' : '' ">
+                <div v-if="searchElement(restaurant) && filterByTypology(restaurant.typologies[0].id)" :class="(searchElement(restaurant) === true)? 'find' : 'no-result' ">
                     <div class="info-restaurant">
                         <h1>
                             {{ restaurant.name }} {{ restaurant.id }}
@@ -214,10 +214,15 @@ export default {
         height: 90vh;
         overflow-y: auto;
         display: flex;
+        // float: left;
         flex-wrap: wrap;
         div.card-container{
+            // display: inline-block;
+            // width: 30%;
+            width: auto;
                 div.find{
-                    width: calc(100% - 3rem);
+                    width: calc(400px - 3rem);
+                    height: 650px;
                     margin: 1.5rem;
                     background-color: $BlueColor;
                     color: white;
@@ -233,6 +238,9 @@ export default {
                     img{
                         width: 100%;
                     }
+                }
+                div.no-result{
+                    width: 0;
                 }
         }
     }
