@@ -11,20 +11,23 @@
                 Cerca per tipologia:
             </h4>
             <ul>
-                <li v-for="(typology,index) in typologies">
-                    <button @click="filterByTypology(index)">
+                <li v-for="typology in typologies">
+                    <button @click="typeSelected = typology.id">
                         {{ typology.name }}
                     </button>
                 </li>
             </ul>
         </div>
         <div class="advanced-results">
-            <div class="card-container" v-for="(restaurant,index) in restaurants">
-                <div v-if="searchElement(restaurant)" :class="(searchElement(restaurant) === true)? 'find' : '' ">
+            <div class="card-container" v-for="restaurant in restaurants">
+                <div v-if="searchElement(restaurant) && filterByTypology(restaurant.typologies[0].id)" :class="(searchElement(restaurant) === true)? 'find' : '' ">
                     <div class="info-restaurant">
                         <h1>
-                            {{ restaurant.name }} {{ index = index + 1 }}
+                            {{ restaurant.name }} {{ restaurant.id }}
                         </h1>
+                        <p>
+                            Tipologia: {{ restaurant.typologies[0].name }}
+                        </p>
                         <img :src="restaurant.image" alt="">
                         <p>
                             <strong>Address:</strong> {{ restaurant.address }}
@@ -41,9 +44,9 @@
                         </p>
                     </div>
                     <div class="buttons">
-                        <a class="btn btn-primary" href="">
+                        <router-link class="btn btn-primary" :to="{ name: 'menù', params: {restaurantId: restaurant.id} }">
                             Guarda il menù
-                        </a>
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -62,12 +65,12 @@ export default {
             store,
             typologyApiUrl: 'http://127.0.0.1:8000/api/typologies',
             restaurantApiUrl: 'http://127.0.0.1:8000/api/restaurant',
-            restaurantTypologyUrl: 'http://127.0.0.1:8000/api/type_restaurant',
+            // restaurantTypologyUrl: 'http://127.0.0.1:8000/api/type_restaurant',
             typologies: [],
             restaurants: [],
             type_restaurant:[],
             searchInput: '',
-            typeId: 0,    
+            typeSelected: 2,    
         }
     },
     methods:{
@@ -77,7 +80,7 @@ export default {
                 }
             })
                 .then( (response) => {
-                    console.log(response);
+                    // console.log(response);
                     this.typologies = response.data.result;
                     // console.log(this.typologies);
                  })
@@ -91,28 +94,28 @@ export default {
                 }
             })
                 .then( (response) => {
-                    this.restaurants = response.data.result;
-                    // console.log(this.restaurants);
+                    this.restaurants = response.data.result.data;
+                    console.log(this.restaurants);
                  })
                 .catch(function (error) {
                     console.log(error);
                 })
         },
-        getRestourantType(){
-            axios.get(this.restaurantTypologyUrl, {
-                params: {
-                }
-            })
-                .then( (response) => {
-                    this.type_restaurant = response.data.result;
-                    console.log(this.type_restaurant);
-                 })
-                .catch(function (error) {
-                    console.log(error);
-                })
-        },
+        // getRestourantType(){
+        //     axios.get(this.restaurantTypologyUrl, {
+        //         params: {
+        //         }
+        //     })
+        //         .then( (response) => {
+        //             this.type_restaurant = response.data.result;
+        //             // console.log(this.type_restaurant);
+        //          })
+        //         .catch(function (error) {
+        //             console.log(error);
+        //         })
+        // },
         searchElement(element){
-            console.log(this.searchInput);
+            // console.log(element);
             if(this.searchInput === '' || this.searchInput === 'Cerca tra centinaia di piatti e ristoranti'){
                 return true;
             }else{
@@ -124,27 +127,29 @@ export default {
         },
 
         filterByTypology(type){
-            console.log('helo');
-            console.log(this.restaurants);
-            this.type_restaurant.forEach((element) => {
-                console.log(restaurant.name + ' : ' + restaurant.id)
-                if(type === 0){
-    
-                }
-            });
-            
+            if(this.typeSelected === 0){
+                return true;
+            }
+            else if(type === this.typeSelected){
+                return true;
+            }
+            return false;
         },  
         setFirstSearch(){
             this.searchInput = this.$route.params.input;
+        },
+        setFirstType(){
+            this.typeSelected = this.store.FirstselectedType; 
         }
     },
     mounted(){
         // console.log(this.store.selectedType);
         this.store.searchBar = false;
         this.setFirstSearch();
+        this.setFirstType();
         this.getTypology();
         this.getRestaurant();
-        this.getRestourantType();
+        // this.getRestourantType();
         // this.filterByTypology(this.store.selectedType);
     }
 }

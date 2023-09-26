@@ -26,9 +26,10 @@ const router = createRouter({
             component: Restaurant
         },
         {
-            path: '/menù',
+            path: '/menù/:restaurantId',
             name: 'menù', 
             component: Menù,
+            props: true
         },   
     ]
 });

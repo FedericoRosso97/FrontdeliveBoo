@@ -6,8 +6,8 @@
     </div>
     <div class="restourant-types">
         <ul>
-            <li v-for="(typology,index) in typologies">
-                <button @click="changeAdvancedSrcType(index)">
+            <li v-for="typology in typologies">
+                <button @click="changeAdvancedSrcType(typology.id)">
                     {{ typology.name }}
                 </button>
             </li>
@@ -44,8 +44,7 @@ import axios from 'axios';
                     })
             },
             changeAdvancedSrcType(type){
-                let castedType = type + 1;
-                this.store.selectedType = castedType;
+                this.store.FirstselectedType = type;
                 this.$router.push({
                     name: 'AdvancedSearch',
                     params:{
