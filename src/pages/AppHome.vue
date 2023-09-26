@@ -24,7 +24,7 @@ import axios from 'axios';
         data(){
             return{
                 store,
-                typologyApiUrl: 'http://127.0.0.1:8000/api/typology',
+                typologyApiUrl: 'http://127.0.0.1:8000/api/typologies',
                 typologies: [],
             }
         },
