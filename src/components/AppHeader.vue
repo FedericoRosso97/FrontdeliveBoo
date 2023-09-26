@@ -10,15 +10,18 @@
             <!-- LOG IN / REGISTRAZIONE -->
         
             <div class="logIn">
+
                 <!-- <router-link :to="{ name: 'login' }">
                     Log-in
                 </router-link> -->
                 <a href="http://127.0.0.1:8000/login">
                     Log-in
                 </a>
+
                 <span>
                     |
                 </span>
+
                 <!-- <router-link :to="{ name: 'registration' }">
                     Registrati
                 </router-link> -->
@@ -66,7 +69,7 @@ export default {
             this.$router.push({
                 name: 'AdvancedSearch',
                 params:{
-                    input: input
+                    input: input,
                 }
             });
         }

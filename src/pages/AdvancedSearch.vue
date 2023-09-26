@@ -11,7 +11,7 @@
                 Cerca per tipologia:
             </h4>
             <ul>
-                <li v-for="typology in typologies">
+                <li v-for="(typology,index) in typologies">
                     <button>
                         {{ typology.name }}
                     </button>
@@ -60,11 +60,12 @@ export default {
     data(){
         return{
             store,
-            typologyApiUrl: 'http://127.0.0.1:8000/api/typology',
+            typologyApiUrl: 'http://127.0.0.1:8000/api/typologies',
             restaurantApiUrl: 'http://127.0.0.1:8000/api/restaurant',
             typologies: [],
             restaurants: [],
-            searchInput: '',    
+            searchInput: '',
+            typeId: 0,    
         }
     },
     methods:{
@@ -74,8 +75,9 @@ export default {
                 }
             })
                 .then( (response) => {
+                    console.log(response);
                     this.typologies = response.data.result;
-                    // console.log(this.typologies);
+                    console.log(this.typologies);
                  })
                 .catch(function (error) {
                     console.log(error);
@@ -88,7 +90,7 @@ export default {
             })
                 .then( (response) => {
                     this.restaurants = response.data.result;
-                    // console.log(this.restaurants);
+                    console.log(this.restaurants);
                  })
                 .catch(function (error) {
                     console.log(error);
@@ -96,7 +98,7 @@ export default {
         },
         searchElement(element){
             console.log(this.searchInput);
-            if(this.searchInput === '' ){
+            if(this.searchInput === '' || this.searchInput === 'Cerca tra centinaia di piatti e ristoranti'){
                 return true;
             }else{
                 if(element.name.toLowerCase().includes(this.searchInput.toLowerCase())){
@@ -110,7 +112,7 @@ export default {
         }
     },
     mounted(){
-        // this.input = this.store.inputSearch;
+        console.log(this.store.selectedType);
         this.setFirstSearch();
         this.getTypology();
         this.getRestaurant();

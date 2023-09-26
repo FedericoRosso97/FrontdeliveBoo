@@ -6,10 +6,10 @@
     </div>
     <div class="restourant-types">
         <ul>
-            <li v-for="typology in typologies">
-                <h3>
+            <li v-for="(typology,index) in typologies">
+                <button @click="changeAdvancedSrcType(index)">
                     {{ typology.name }}
-                </h3>
+                </button>
             </li>
         </ul>
     </div>
@@ -24,8 +24,9 @@ import axios from 'axios';
         data(){
             return{
                 store,
-                typologyApiUrl: 'http://127.0.0.1:8000/api/typology',
+                typologyApiUrl: 'http://127.0.0.1:8000/api/typologies',
                 typologies: [],
+                emptyimput: 'Cerca tra centinaia di piatti e ristoranti',
             }
         },
         methods:{
@@ -41,7 +42,17 @@ import axios from 'axios';
                     .catch(function (error) {
                         console.log(error);
                     })
-            }
+            },
+            changeAdvancedSrcType(type){
+                let castedType = type + 1;
+                this.store.selectedType = castedType;
+                this.$router.push({
+                    name: 'AdvancedSearch',
+                    params:{
+                        input: this.emptyimput
+                    }
+            });
+        }
         },
         mounted(){
             store.searchBar = true;
