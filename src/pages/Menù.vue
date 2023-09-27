@@ -25,37 +25,58 @@
         </h4>
         <ul>
             <li>
-                <h5>
-                    Nome: {{ restaurant.name }}
-                </h5>
+                <h3 class="restaurant-name">
+                    {{ restaurant.name }}
+                </h3>
             </li>
 
-            <li>
+            <li class="img-containers">
                 <img :src="restaurant.image" alt="restaurant image">
             </li>
 
             <li>
                 <p>
+                    <strong>
+                        Address: 
+                    </strong>
                     {{ restaurant.address }}
                 </p>
             </li>
 
             <li>
                 <p>
-                    Email: {{ restaurant.email }}
+                    <strong>
+                        Email: 
+                    </strong>
+                    {{ restaurant.email }}
                 </p>
             </li>
 
             <li>
-                Phone: {{  restaurant.telephone_number }}
+                <p>
+                    <strong>
+                        Phone: 
+                    </strong>
+                    {{  restaurant.telephone_number }}
+                </p>
             </li>
 
             <li>
-                Opening: {{ restaurant.opening_time }}
+                <p>
+                    <strong>
+                        Opening: 
+                    </strong>
+                    {{ restaurant.opening_time }}
+                </p>
             </li>
 
             <li>
-                Vote: {{ restaurant.vote }}
+                <p>
+                    <strong>
+                        Vote: 
+                    </strong>
+                    {{ restaurant.vote }}
+                </p>
             </li>
         </ul>
     </div>
@@ -179,8 +200,15 @@ section.menu-searchbar{
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
-                img{
-                    height: 250px;
+                li.img-containers{
+                    width: 90%;
+                    img{
+                        width: 100%;
+                        margin-bottom: 2rem;
+                    }
+                }
+                h3.restaurant-name{
+                    margin: 2rem 0;
                 }
                 button{
                     background-color: $LightBlueColor;
