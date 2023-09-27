@@ -134,7 +134,7 @@ export default {
 
         // IMPOSTA LA PRIMA RICERCA, SE PRESENTE
         setFirstSearch(){
-            this.searchInput = this.$route.params.input;
+            this.searchInput = this.store.FirstSearch;
         },
 
         // IMPOSTA LA PRIMA TIPOLOGIA, SE PRESENTE
@@ -144,6 +144,7 @@ export default {
     },
     mounted(){
         this.store.searchBar = false;
+        this.store.menuRestaurant = false;
         this.setFirstSearch();
         this.setFirstType();
         this.getTypology();

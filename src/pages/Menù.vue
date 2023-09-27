@@ -111,7 +111,7 @@ export default {
     },
     mounted(){
         this.store.searchBar = false;
-        // this.store.menuRestaurant = true;
+        this.store.menuRestaurant = true;
         // this.selectedId = this.$route.params.restaurantId;
         this.getSelectedRestourant(this.$route.params.restaurantId);
     }

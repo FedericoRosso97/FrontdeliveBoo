@@ -15,10 +15,9 @@ const router = createRouter({
             component: AppHome
         },
         {
-            path: '/advancedSearch/:input',
+            path: '/advancedSearch',
             name: 'AdvancedSearch', 
             component: AdvancedSearch,
-            props: true
         },
         {
             path: '/restaurant',

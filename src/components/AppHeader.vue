@@ -52,24 +52,11 @@
             </div>
         </div>
 
-        <!-- <div class="lower-header" v-if="this.store.menuRestaurant === true">
-            <div class="searchBar">
-                <div class="choose-box">
-                    <h1>
-                        Cosa vuoi vedere?
-                    </h1>
-                </div>
-                <nav>
-                    <ul>
-                        <li v-for="link in links">
-                            <router-link :to="{ name: link.route }">
-                            {{ link.name }}
-                            </router-link>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div> -->
+        <div class="return-restaurants" v-if="this.store.menuRestaurant === true">
+            <router-link :to="{ name: 'AdvancedSearch'}" class="btn btn-light">
+                Ritorna alla lista ristoranti
+            </router-link>
+        </div>
     </header>
 </template>
 
@@ -95,11 +82,9 @@ export default {
     },
     methods:{
         changeAdvancedSrc(input){
+            this.store.FirstSearch = input;
             this.$router.push({
                 name: 'AdvancedSearch',
-                params:{
-                    input: input,
-                }
             });
         }
     },
@@ -201,7 +186,7 @@ export default {
 
     img {
         height: 200px;
-        margin-left: 10rem;
+        margin-left: 3rem;
     }
 }
 
@@ -227,22 +212,31 @@ li {
     }
 }
 
-.lower-header {
-    background-color: #FDCF48;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-
-
-    .choose-box {
-        display: flex;
-        justify-content: center;
-
-        h1 {
-            color: #F8F8F8;
-        }
+div.return-restaurants{
+    // display: flex;
+    // justify-content: flex;
+    position: relative;
+    a{
+        position: absolute;
+        left: 250px;
     }
 }
+// .lower-header {
+//     background-color: #FDCF48;
+//     height: 150px;
+//     display: flex;
+//     justify-content: center;
+
+
+//     .choose-box {
+//         display: flex;
+//         justify-content: center;
+
+//         h1 {
+//             color: #F8F8F8;
+//         }
+//     }
+// }
 .searchBar {
     width: 50%;
     padding: 2.5rem;
