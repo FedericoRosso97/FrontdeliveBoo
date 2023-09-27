@@ -48,7 +48,7 @@
                         </p>
                     </div>
                     <div class="buttons">
-                        <router-link class="btn btn-primary" :to="{ name: 'menù', params: {platesList: restaurant.plates } }">
+                        <router-link class="btn btn-primary" :to="{ name: 'menù', params: {restaurantId: restaurant.id } }">
                             Guarda il menù
                         </router-link>
                     </div>
@@ -101,6 +101,7 @@ export default {
             })
                 .then( (response) => {
                     this.restaurants = response.data.result.data;
+                    this.store.restaurantsList = this.restaurants;
                     // console.log(this.restaurants);
                  })
                 .catch(function (error) {

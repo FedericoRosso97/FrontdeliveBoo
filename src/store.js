@@ -1,9 +1,10 @@
 import {reactive} from 'vue';
 
 export const store = reactive({
-    menuRestaurant: false,
+    // menuRestaurant: false,
     searchBar : true,
     advancedSearch : false,
     FirstselectedType: 0,
+    restaurantsList: [],
 });
 

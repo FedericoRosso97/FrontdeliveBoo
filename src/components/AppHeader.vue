@@ -52,7 +52,7 @@
             </div>
         </div>
 
-        <div class="lower-header" v-if="this.store.menuRestaurant === true">
+        <!-- <div class="lower-header" v-if="this.store.menuRestaurant === true">
             <div class="searchBar">
                 <div class="choose-box">
                     <h1>
@@ -69,7 +69,7 @@
                     </ul>
                 </nav>
             </div>
-        </div>
+        </div> -->
     </header>
 </template>
 
