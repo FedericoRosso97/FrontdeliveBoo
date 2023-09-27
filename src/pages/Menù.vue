@@ -60,13 +60,22 @@
         </ul>
     </div>
 
-    <!-- LISTA DEI  -->
+    <!-- LISTA DEI PIATTI DISPONIBILI -->
     <div class="menu-results">
         <div class="plate-container">
             <div class="plate" v-for="plate in plates">
-                <h1>
+
+                <img :src="plate.image" alt="">
+                <h3>
                     {{ plate.name }}
-                </h1>
+                </h3>
+                <p>
+                    {{ plate.description }}
+                </p>
+
+                <button class="btn btn-primary">
+                    Aggiungi al carrello - {{ plate.plate_price }}
+                </button>
             </div>
         </div>
     </div>
@@ -95,7 +104,7 @@ export default {
                 if(restaurant.id == id){
                     this.restaurant = restaurant;
                     this.plates = restaurant.plates;
-                    // console.log(this.restourant);
+                    console.log(this.plates);
                 }
             })
         }
@@ -190,13 +199,32 @@ section.menu-searchbar{
         
         width: 100%;
         div.plate-container{
-            background-color: red;
-
             width: 80%;
             height: 100%;
             margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             div.plate{
-                
+                width: 30%;
+                height: 500px;
+                padding: 1rem;
+                margin: 1rem;
+                background-color: $BlueColor;
+                border-radius: 0.5rem;
+                color: white;
+                position: relative;
+                img{
+                    width: 100%;
+                    height: 250px;
+                    object-fit: cover;
+                    border-radius: 0.5rem;
+                    margin-bottom: 1.5rem;
+                }
+                button{
+                    position: absolute;
+                    bottom: 1.5rem;
+                }
             }
         }
     }
