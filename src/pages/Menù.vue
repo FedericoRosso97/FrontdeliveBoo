@@ -105,8 +105,29 @@
             <h3>
                 Il tuo ordine:
             </h3>
-            <div class="order-item" v-for="order in orders">
-                {{ order.name }}
+            <div class="order-container">
+                <div class="order-name">
+                    <div class="order-item" v-for="order in orders">
+                        <p>
+                            - {{ order.name }}
+                        </p>
+                    </div>
+                </div>
+                <div class="order-price">
+                    <div class="order-item" v-for="(order,index) in orders">
+                        <p>
+                            {{ order.plate_price }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="order-total">
+                <h4>
+                    Totale: {{ total }}
+                </h4>
+                <button class="btn btn-primary">
+                    Completa l'ordine
+                </button>
             </div>
         </div>
     </div>
@@ -142,8 +163,12 @@ export default {
             })
         },
         addToCart(plate){
+            this.total = parseFloat(this.total)
             this.orders.push(plate);
-            console.log(this.order);
+            let price = plate.plate_price
+            price = parseFloat(price.replace(",",".").replace("€",""));
+            this.total = this.total + price;
+            this.total = parseFloat(this.total).toFixed(2);
         }
     },
     mounted(){
@@ -274,7 +299,34 @@ section.menu-searchbar{
     }
 
     div.shop{
-        width: 700px;
-        background-color: red;
+        width: 800px;
+        // background-color: red;
+        div.shop-container{
+            background-color: $YellowColor;
+            height: 400px;
+            margin-top: 3rem;
+            margin-right: 2rem;
+            padding: 0 2rem;
+            div.order-container{
+                height: 300px;
+                display: flex;
+                justify-content: space-between;
+                padding: 0 2rem;
+                overflow-y: auto;
+            }
+            div.order-price{
+                button.plate-delete{
+                    width: 8px;
+                    height: 25px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+            div.order-total{
+                display: flex;
+                justify-content: space-between;
+            }
+        }
     }
 </style>
