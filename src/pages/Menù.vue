@@ -123,7 +123,7 @@
             </div>
             <div class="order-total">
                 <h4>
-                    Totale: {{ total }}
+                    Totale: {{ total }} €
                 </h4>
                 <button class="btn btn-primary">
                     Completa l'ordine
@@ -267,6 +267,7 @@ section.menu-searchbar{
     div.menu-results{
         
         width: 100%;
+        overflow-y: auto;
         div.plate-container{
             width: 80%;
             height: 100%;
@@ -304,8 +305,9 @@ section.menu-searchbar{
         div.shop-container{
             background-color: $YellowColor;
             height: 400px;
-            margin-top: 3rem;
-            margin-right: 2rem;
+            // margin-top: 3rem;
+            // margin-right: 2rem;
+            margin: 3rem 1rem;
             padding: 0 2rem;
             div.order-container{
                 height: 300px;
