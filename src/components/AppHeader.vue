@@ -4,8 +4,9 @@
         <div class="upper-header">
 
             <!-- LOGO -->
-
-            <img src="../assets/logo_deliveboo.png" alt="DeliveBoo brand image">            
+            <a href="http://localhost:5174">
+                <img src="../assets/logo_deliveboo.png" alt="DeliveBoo brand image" >            
+            </a>
 
             <!-- LOG IN / REGISTRAZIONE -->
         
@@ -106,9 +107,13 @@ export default {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            img{
-                height: 200%;
+            a{
+                height: 160px;
+                img{
+                    height: 100%;
+                }
             }
+            
             div.logIn-ok,
             div.logIn{
                 span,
@@ -172,8 +177,11 @@ export default {
         background: linear-gradient(to top,$BlueColor 0%,$BlueColor 50%,$BlueColor 50%,$BlueColor 100%);
 
         div.upper-header{
-            img{
+            a{
                 height: 160px;
+                img{
+                    height: 100%;
+                }
             }
         }
     }
