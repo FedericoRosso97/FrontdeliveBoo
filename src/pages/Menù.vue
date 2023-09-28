@@ -118,6 +118,9 @@
                         <p>
                             {{ order.plate_price }}
                         </p>
+                        <button class="btn btn-danger" @click="removeItem(index)">
+                            X
+                        </button>
                     </div>
                 </div>
             </div>
@@ -163,12 +166,19 @@ export default {
             })
         },
         addToCart(plate){
-            this.total = parseFloat(this.total)
+            this.total = parseFloat(this.total);
             this.orders.push(plate);
             let price = plate.plate_price
             price = parseFloat(price.replace(",",".").replace("€",""));
             this.total = this.total + price;
             this.total = parseFloat(this.total).toFixed(2);
+        },
+        removeItem(item){
+            this.total = parseFloat(this.total);
+            let platePrice = parseFloat(this.orders[item].plate_price.replace(",",".").replace("€",""));
+            this.total = this.total - platePrice;
+            this.total = parseFloat(this.total).toFixed(2);
+            this.orders.splice(item,1);
         }
     },
     mounted(){
@@ -323,6 +333,18 @@ section.menu-searchbar{
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                }
+            }
+            div.order-item{
+                display: flex;
+                justify-content: space-between;
+                button{
+                    height: 25px;
+                    width: 7px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-left: 1rem;
                 }
             }
             div.order-total{
