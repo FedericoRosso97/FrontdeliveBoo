@@ -125,9 +125,9 @@
                 <h4>
                     Totale: {{ total }} €
                 </h4>
-                <button class="btn btn-primary">
+                <a class="btn btn-primary" href="http://127.0.0.1:8000/payment">
                     Completa l'ordine
-                </button>
+                </a>
             </div>
         </div>
     </div>
