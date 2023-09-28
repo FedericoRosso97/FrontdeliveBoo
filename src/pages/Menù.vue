@@ -94,9 +94,19 @@
                     {{ plate.description }}
                 </p>
 
-                <button class="btn btn-primary">
+                <button class="btn btn-primary" @click="addToCart(plate)">
                     Aggiungi al carrello - {{ plate.plate_price }}
                 </button>
+            </div>
+        </div>
+    </div>
+    <div class="shop">
+        <div class="shop-container">
+            <h3>
+                Il tuo ordine:
+            </h3>
+            <div class="order-item" v-for="order in orders">
+                {{ order.name }}
             </div>
         </div>
     </div>
@@ -115,6 +125,8 @@ export default {
             store,
             restaurantApiUrl: 'http://127.0.0.1:8000/api/restaurant',
             plates: [],
+            orders: [],
+            total: 0,
             restaurant: '',
         }
     },
@@ -128,6 +140,10 @@ export default {
                     console.log(this.plates);
                 }
             })
+        },
+        addToCart(plate){
+            this.orders.push(plate);
+            console.log(this.order);
         }
     },
     mounted(){
@@ -182,7 +198,7 @@ section.menu-searchbar{
         height: calc(100vh - 10vh);
         display: flex;
         div.menu-sidebar{
-            width: 25vw;
+            width: 30vw;
             background-color: $YellowColor;
             h4{
                 text-align: center;
@@ -255,5 +271,10 @@ section.menu-searchbar{
                 }
             }
         }
+    }
+
+    div.shop{
+        width: 700px;
+        background-color: red;
     }
 </style>
