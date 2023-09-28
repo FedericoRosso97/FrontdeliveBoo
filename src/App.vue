@@ -1,11 +1,14 @@
 <script setup>
 import AppHeader from './components/AppHeader.vue';
+import AppChart from './components/AppChart.vue';
 import AppFooter from './components/AppFooter.vue';
+
 
 </script>
 
 <template>
   <AppHeader/>  
+  <AppChart />
     <router-view>
     </router-view>
   <AppFooter/>

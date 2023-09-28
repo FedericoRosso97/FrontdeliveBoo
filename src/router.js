@@ -6,6 +6,8 @@ import AdvancedSearch from './pages/AdvancedSearch.vue';
 import Restaurant from './pages/Restaurant.vue';
 import Menù from './pages/Menù.vue';
 
+//import AppChart from './pages/AppChart.vue';
+
 const router = createRouter({
     history:createWebHistory(),
     routes:[
@@ -30,6 +32,13 @@ const router = createRouter({
             component: Menù,
             props: true
         },   
+        //
+        /*{
+            path: '/appchart',
+            name: 'AppChart', 
+            component: AppChart,
+        },
+        */
     ]
 });
 
