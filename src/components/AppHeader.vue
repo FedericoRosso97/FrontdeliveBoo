@@ -145,7 +145,7 @@ export default {
                 border: 7px solid white;
                 border-radius: 2rem;
                 position: absolute;
-                top: 130px;
+                top: 180px;
                 text-align: center;
                 h1{
                     color: white;
