@@ -187,6 +187,7 @@ export default {
         }
     }
 .upper-header {
+    padding-top: 3rem;
     background-color: #1695A6;
     height: 150px;
     display: flex;
