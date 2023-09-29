@@ -106,10 +106,23 @@
                 Il tuo ordine:
             </h3>
             <div class="order-container">
+                <div class="order-quantity">
+                    <div v-for="(orderTot,index) in ordersQuantity">
+                        <button class="btn btn-light" @click="removeQuantity(index)">
+                            -
+                        </button>
+                        <p>
+                            {{ orderTot }}
+                        </p>
+                        <button class="btn btn-light" @click="addQuantity(index)">
+                            +
+                        </button>
+                    </div>
+                </div>
                 <div class="order-name">
                     <div class="order-item" v-for="order in orders">
                         <p>
-                            - {{ order.name }}
+                            {{ order.name }}
                         </p>
                     </div>
                 </div>
@@ -118,7 +131,7 @@
                         <p>
                             {{ order.plate_price }}
                         </p>
-                        <button class="btn btn-danger" @click="removeItem(index)">
+                        <button class="btn btn-danger btn-sm" @click="removeItem(index)">
                             X
                         </button>
                     </div>
@@ -150,6 +163,7 @@ export default {
             restaurantApiUrl: 'http://127.0.0.1:8000/api/restaurant',
             plates: [],
             orders: [],
+            ordersQuantity: [],
             total: 0,
             restaurant: '',
         }
@@ -161,25 +175,65 @@ export default {
                 if(restaurant.id == id){
                     this.restaurant = restaurant;
                     this.plates = restaurant.plates;
-                    console.log(this.plates);
+                    // console.log(this.plates);
                 }
             })
         },
         addToCart(plate){
             this.total = parseFloat(this.total);
-            this.orders.push(plate);
+            let yetInList = false;
+            if(this.orders.length === 0){
+                this.ordersQuantity.push(1);
+                this.orders.push(plate);
+                // console.log('added first');
+            }else{
+                for(let i = 0; i < this.orders.length; i++){
+                    // console.log('hello');
+                    if(this.orders[i] === plate){
+                        this.ordersQuantity[i]++;
+                        // console.log('added quantity');
+                        yetInList = true;
+                        // break;
+                    }
+                }
+                // console.log(yetInList);
+                if(yetInList === false){
+                    this.ordersQuantity.push(1);
+                    this.orders.push(plate);
+                    // console.log('added plate');
+                }
+            }
             let price = plate.plate_price
             price = parseFloat(price.replace(",",".").replace("€",""));
             this.total = this.total + price;
             this.total = parseFloat(this.total).toFixed(2);
+            // console.log(this.orders);
         },
         removeItem(item){
             this.total = parseFloat(this.total);
             let platePrice = parseFloat(this.orders[item].plate_price.replace(",",".").replace("€",""));
-            this.total = this.total - platePrice;
+            this.total = this.total - (platePrice * this.ordersQuantity[item]);
             this.total = parseFloat(this.total).toFixed(2);
             this.orders.splice(item,1);
-        }
+            this.ordersQuantity.splice(item,1);
+        },
+        addQuantity(i){
+            this.ordersQuantity[i]++;
+            this.total = parseFloat(this.total);
+            let platePrice = parseFloat(this.orders[i].plate_price.replace(",",".").replace("€",""));
+            this.total = this.total + platePrice;
+            this.total = parseFloat(this.total).toFixed(2);
+        },
+        removeQuantity(i){
+            this.ordersQuantity[i]--;
+            this.total = parseFloat(this.total);
+            let platePrice = parseFloat(this.orders[i].plate_price.replace(",",".").replace("€",""));
+            this.total = this.total - platePrice;
+            this.total = parseFloat(this.total).toFixed(2);
+            if(this.ordersQuantity[i] < 1){
+                this.removeItem(i);
+            }
+        },
     },
     mounted(){
         this.store.searchBar = false;
@@ -314,17 +368,44 @@ section.menu-searchbar{
         // background-color: red;
         div.shop-container{
             background-color: $YellowColor;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border-radius: 0.5rem;
             height: 400px;
             // margin-top: 3rem;
             // margin-right: 2rem;
             margin: 3rem 1rem;
             padding: 0 2rem;
+            position: relative;
+            h3{
+                padding: 0.5rem 0;
+            }
             div.order-container{
-                height: 300px;
+                background-color: $WhiteColor;
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                border-radius: 0.5rem;
+                height: 250px;
                 display: flex;
                 justify-content: space-between;
-                padding: 0 2rem;
+                padding: 0.7rem 1rem;
                 overflow-y: auto;
+                div.order-quantity{
+                    div{
+                        display: flex;
+                        button{
+                            height: 25px;
+                            width: 20px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            // credits: Material
+                            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+                        }
+                        p{
+                            margin-left: 0.3rem;
+                            margin-right: 0.3rem;
+                        }
+                    }
+                }
             }
             div.order-price{
                 button.plate-delete{
@@ -344,12 +425,23 @@ section.menu-searchbar{
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    margin-left: 1rem;
+                    margin-left: 0.3rem;
                 }
             }
             div.order-total{
+                width: 370px;
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
+                position: absolute;
+                bottom: 1rem;
+                h4{
+                    background-color: $BlueColor;
+                    border-radius: 0.3rem;
+                    color: white;
+                    padding: 0.5rem;
+                }
+                
             }
         }
     }
