@@ -13,6 +13,63 @@
             </li>
         </ul>
     </div>
+
+    <div class="wave mt-5"></div>
+
+        <section class="grey-bg text-center">
+            <div class="d-flex big-container row align-items-center">
+                <div class="pink-box col-6 col-md-6 col-sm-12">
+                    <h1>I tuoi piatti preferiti, consegnati da noi.</h1>
+                    <p class="main-paragraph">Mettiti comodo, ovunque tu sei ti consegnamo il tuo piatto preferito in pochissimi minuti!.</p>
+                </div>
+                <div class="d-flex lightblue-box col-6 col-md-6 col-sm-12">
+                    <img class="hamburger" src="/hamburger.png" alt="picture of image2">
+                </div>
+            </div>
+        </section>
+    
+        <div class="wave reverse mb-5"></div>
+
+<div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12 col-lg-6 mb-3 rider-card">
+                <div class="details-card">
+                    <h3>
+                        Rider
+                    </h3>
+                    <p>
+                        Diventa un rider: flessibilità, serietà, ottimi guadagni e un mondo di vantaggi per te.
+                    </p>
+                </div>
+
+                <div class="title-wrapper">
+                    <button>
+                        Rider
+                    </button>
+                </div>
+
+            </div>
+            <div class="col-12 col-lg-6 work-card">
+                <div class="details-card">
+                    <h3>
+                        Lavora con noi
+                    </h3>
+                    <p>
+                        La nostra missione è trasformare il modo in cui le persone mangiano, e ci servono persone che ci aiutino a raggiungerlo. 
+                    </p>
+                </div>
+
+                <div class="title-wrapper">
+                    <button>
+                        Lavora con noi
+                    </button>
+                    
+                </div>
+            </div>
+        </div>
+</div>
+
 </template>
 
 <script>
@@ -38,7 +95,7 @@ import axios from 'axios';
                     .then( (response) => {
                         this.typologies = response.data.result;
                         // console.log(this.typologies);
-                     })
+                    })
                     .catch(function (error) {
                         console.log(error);
                     })
@@ -91,4 +148,161 @@ import axios from 'axios';
             }
         }
     }
+
+
+    .grey-bg {
+        background-color: #f6f6f6;
+        height: 400px;
+        align-items: center;
+        display: flex;
+    .big-container{
+        width: 70%;
+        margin: 0 auto;
+        max-width: 1200px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        align-items: center;
+
+            .pink-box{
+            // height: 600px;
+            // width: 30%;
+
+                h1{
+                // margin-top: 9.5rem;
+                font-size: 3.2rem;
+                    .lightblue-box{
+                    width: 70%;
+                    margin-bottom: 120px;
+
+                    }
+                }
+            }
+        } 
+    }
+
+
+
+
+    div.wave{
+    height: 80px;
+    background-image: url('/wave.svg');
+    filter: opacity(0.04);
+    background-size: cover;
+    }
+
+    div.wave.reverse{
+        height: 80px;
+        transform: rotateX(0.5turn);
+    }
+
+    img.hamburger{
+        width: 100%;
+    }
+
+    p.main-paragraph{
+        line-height: 30px;
+        margin-top: 30px;
+        font-size:25px;
+    }
+
+
+    div.container-fluid{
+        max-width: 65%;
+        margin-top: 8rem;
+        margin-bottom: 8rem;
+
+        div.rider-card{
+        height: 600px;
+        background-image: url(https://img.freepik.com/free-photo/busy-deliveryman-driving-yellow-scooter-while-holding-pizza-boxes_273609-31761.jpg?size=626&ext=jpg&ga=GA1.2.1372780751.1695983464&semt=ais);
+        background-repeat: no-repeat;
+        position: relative;
+        object-position: 50% 50%;
+        text-align: center;
+    }
+
+
+    
+}
+
+div.title-wrapper{
+    background-color: rgb(253, 207, 72, 0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    transform: translateX(0);
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: white;
+    transition: all .3s ease-in-out;
+    opacity: 0;
+
+
+}
+
+div.rider-card:hover div.title-wrapper{
+    transform: translateX(0);
+    opacity: 1;
+}
+
+div.details-card{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 1.3rem;
+    background-color: #1795a8;
+    width: 100%;
+}
+
+div.details-card h3{
+    margin-bottom: .8rem;
+    color: white;
+}
+
+div.details-card p{
+    color: #ffff;
+}
+
+div.work-card{
+    background-image: url(https://img.freepik.com/free-photo/hiring-concept-with-people-coming-together_23-2149519873.jpg?t=st=1695983463~exp=1695984063~hmac=c4d5db5d96cbfac78c9056070938a8b71b756972514f76c4ad34d8fe29c2f16f);
+    height: 600px;
+    border-left: 4px solid white;
+    position: relative;
+    object-fit: cover;
+    text-align: center;
+
+}
+
+div.work-card:hover div.title-wrapper{
+    transform: translateX(0);
+    opacity: 1;
+}
+
+div.title-wrapper button{
+        background-color: #24afc1;
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+
+        &:hover{
+            background-color: #fdcf48;
+            transform: scale(1.1);
+            border: 2px solid black;
+        }
+    }
+
+
+
 </style>
