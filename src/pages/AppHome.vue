@@ -4,7 +4,7 @@
             Scegli il tipo di ristorante:
         </h2>
     </div>
-    <div class="restourant-types">
+    <div class="restaurant-types">
         <ul>
             <li v-for="typology in typologies">
                 <button @click="changeAdvancedSrcType(typology.id)">
@@ -16,13 +16,13 @@
 
     <div class="wave mt-5"></div>
 
-        <section class="grey-bg text-center">
+        <section class="jumbotron text-center">
             <div class="d-flex big-container row align-items-center">
-                <div class="pink-box col-6 col-md-6 col-sm-12">
+                <div class="text-box col-12 col-md-6 col-sm-12">
                     <h1>I tuoi piatti preferiti, consegnati da noi.</h1>
-                    <p class="main-paragraph">Mettiti comodo, ovunque tu sei ti consegnamo il tuo piatto preferito in pochissimi minuti!.</p>
+                    <p class="main-paragraph">Mettiti comodo, ovunque tu sei ti consegnamo il tuo piatto preferito in pochissimi minuti!</p>
                 </div>
-                <div class="d-flex lightblue-box col-6 col-md-6 col-sm-12">
+                <div class="d-flex img-box col-12 col-md-6 col-sm-12">
                     <img class="hamburger" src="/hamburger.png" alt="picture of image2">
                 </div>
             </div>
@@ -45,7 +45,7 @@
 
                 <div class="title-wrapper">
                     <button>
-                        Rider
+                        Diventa un Rider
                     </button>
                 </div>
 
@@ -126,7 +126,7 @@ import axios from 'axios';
         }
     }
 
-    div.restourant-types{
+    div.restaurant-types{
         margin: 0 auto;
         width: 85%;
         ul{
@@ -139,18 +139,56 @@ import axios from 'axios';
                 width: 30%;
                 background-color: $BlueColor;
                 margin-top: 2rem;
-                padding: 1rem 0;
-                border-radius: 1rem;
-                border: 2px solid $LightBlueColor;
-                h3{
+                padding: 4rem 0;
+                border-radius: 32px 64px;
+                display: block;
+                position: relative;
+                margin: 12px;
+                text-decoration: none;
+                z-index: 0;
+                overflow: hidden;
+                background: linear-gradient(110deg, #24afc1 60%, #1795a8 60%);
+                // background-image: url(https://img.freepik.com/free-vector/hand-drawn-w-colours-pattern_23-2149865117.jpg?w=826&t=st=1695994129~exp=1695994729~hmac=7b23b6e437dee540e66613cf);
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    z-index: -1;
+                    top: -16px;
+                    right: -16px;
+                    // background: rgb(23, 149, 168, 0.6);
+                    background: rgb(253, 207, 72, 0.6);
+                    height: 32px;
+                    width: 32px;
+                    border-radius: 32px;
+                    transform: scale(1);
+                    transform-origin: 50% 50%;
+                    transition: transform 0.25s ease-out;
                     color: white;
+
                 }
+
+                &:hover:before {
+                    transform: scale(21);
+                }
+                
             }
         }
     }
 
+    li button{
+        background: none;
+        border: none;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: #fdcf48;
+        text-shadow: 3px 3px #107e8f;
 
-    .grey-bg {
+    }
+
+
+    .jumbotron {
         background-color: #f6f6f6;
         height: 400px;
         align-items: center;
@@ -163,14 +201,14 @@ import axios from 'axios';
         padding-bottom: 20px;
         align-items: center;
 
-            .pink-box{
+            .text-box{
             // height: 600px;
             // width: 30%;
 
                 h1{
                 // margin-top: 9.5rem;
                 font-size: 3.2rem;
-                    .lightblue-box{
+                    .img-box{
                     width: 70%;
                     margin-bottom: 120px;
 
@@ -188,6 +226,7 @@ import axios from 'axios';
     background-image: url('/wave.svg');
     filter: opacity(0.04);
     background-size: cover;
+    padding-top: 10rem;
     }
 
     div.wave.reverse{

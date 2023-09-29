@@ -10,7 +10,7 @@
 
             <!-- LOG IN / REGISTRAZIONE -->
         
-            <div class="logIn">
+            <div class="logIn pe-4">
 
                 <!-- <router-link :to="{ name: 'login' }">
                     Log-in
@@ -33,6 +33,7 @@
         </div>
 
         <div class="bottom-header" v-if="store.searchBar === true">
+
 
             <!-- SEARCHBAR -->
     
@@ -100,7 +101,7 @@ export default {
     header.home-small,
     header.home-start{
         height: 35vh;
-        padding: 2.5rem 12rem;
+        // padding: 2.5rem 12rem;
         background: linear-gradient(to top,$YellowColor 0%,$YellowColor 50%,$BlueColor 50%,$BlueColor 100%);
         div.upper-header{
             height: 30%;
@@ -255,4 +256,6 @@ div.return-restaurants{
     top: 200px;
     text-align: center;
 }
+
+
 </style>
