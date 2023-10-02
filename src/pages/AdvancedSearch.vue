@@ -33,7 +33,7 @@
                             Tipologia: {{ restaurant.typologies[0].name }}
                         </p>
                         <img :src="restaurant.image" alt="">
-                        <p>
+                        <p class="mt-3">
                             <strong>Address:</strong> {{ restaurant.address }}
                         </p>
                         <p>
@@ -44,14 +44,16 @@
                             {{ restaurant.opening_time }}
                         </p>
                         <p>
+                            <i class="fa-solid fa-star yellow" v-for="star in dividedNum(restaurant.vote)"></i>
+                            <i class="fa-solid fa-star" v-for="star in 5 - dividedNum(restaurant.vote)"></i>
+                        </p>
+                        <p>
                             <strong>Phone:</strong> {{ restaurant.telephone_number }}
                         </p>
                     </div>
-                    <div class="buttons">
-                        <router-link class="btn btn-primary" :to="{ name: 'menù', params: {restaurantId: restaurant.id } }">
+                        <router-link class="btn btn-primary mt-3" :to="{ name: 'menù', params: {restaurantId: restaurant.id } }">
                             Guarda il menù
                         </router-link>
-                    </div>
                 </div>
             </div>
         </div>
@@ -140,6 +142,10 @@ export default {
         // IMPOSTA LA PRIMA TIPOLOGIA, SE PRESENTE
         setFirstType(){
             this.typeSelected = this.store.FirstselectedType; 
+        },
+
+        dividedNum(num){
+            return Math.ceil(num/2)
         }
     },
     mounted(){
@@ -214,24 +220,23 @@ export default {
         display: flex;
         // float: left;
         flex-wrap: wrap;
+        text-align: center;
         div.card-container{
             // display: inline-block;
             // width: 30%;
             width: auto;
                 div.find{
-                    width: calc(400px - 3rem);
-                    height: 650px;
+                    width: calc(350px - 3rem);
+                    height: 700px;
                     margin: 1.5rem;
                     background-color: $BlueColor;
                     color: white;
                     padding: 1rem;
                     position: relative;
-                    div.buttons{
-                        a{
-                            position: absolute;
-                            right: 40px;
-                            bottom: 70px;
-                        }
+                    border-radius: 10px;
+                    transition: all 0.3s;
+                    &:hover{
+                        transform: scale(1.15);
                     }
                     img{
                         width: 100%;
@@ -242,4 +247,14 @@ export default {
                 }
         }
     }
+
+    .fa-star{
+        color: grey;
+    }
+
+    .fa-star.yellow{
+        color: #fccf47;
+    }
+
+
 </style>

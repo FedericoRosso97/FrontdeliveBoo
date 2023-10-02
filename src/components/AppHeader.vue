@@ -10,7 +10,7 @@
 
             <!-- LOG IN / REGISTRAZIONE -->
         
-            <div class="logIn">
+            <div class="logIn pe-4">
 
                 <!-- <router-link :to="{ name: 'login' }">
                     Log-in
@@ -33,6 +33,7 @@
         </div>
 
         <div class="bottom-header" v-if="store.searchBar === true">
+
 
             <!-- SEARCHBAR -->
     
@@ -97,11 +98,16 @@ export default {
 
 <style scoped lang="scss">
     @use '../styles/partials/variables.scss' as *;
+
+    header{
+        // background: linear-gradient(-20deg, #FCCF47 60%, #1795A8 60%);
+        background: linear-gradient(-70deg, #fa7c30 30%, rgba(0, 0, 0, 0) 30%), url('https://img.freepik.com/free-photo/flat-lay-arrangement-with-salad-box-sauce_23-2148247883.jpg?w=1380&t=st=1695997291~exp=1695997891~hmac=3511ad5c4222fc97e3fc47e4dd4ab7e87dc1da0fd8427fa988455b5432daa3d7');
+    }
     header.home-small,
     header.home-start{
-        height: 35vh;
-        padding: 2.5rem 12rem;
-        background: linear-gradient(to top,$YellowColor 0%,$YellowColor 50%,$BlueColor 50%,$BlueColor 100%);
+        height: 40vh;
+        // padding: 2.5rem 12rem;
+        // background: linear-gradient(to top,$YellowColor 0%,$YellowColor 50%,$BlueColor 50%,$BlueColor 100%);
         div.upper-header{
             height: 30%;
             display: flex;
@@ -139,7 +145,7 @@ export default {
                 border: 7px solid white;
                 border-radius: 2rem;
                 position: absolute;
-                top: 100px;
+                top: 180px;
                 text-align: center;
                 h1{
                     color: white;
@@ -186,7 +192,8 @@ export default {
         }
     }
 .upper-header {
-    background-color: #1695A6;
+    padding-top: 3rem;
+    // background-color: #1695A6;
     height: 150px;
     display: flex;
     justify-content: space-between;
@@ -255,4 +262,6 @@ div.return-restaurants{
     top: 200px;
     text-align: center;
 }
+
+
 </style>
