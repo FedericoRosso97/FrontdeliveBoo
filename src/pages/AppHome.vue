@@ -45,7 +45,9 @@
 
                 <div class="title-wrapper">
                     <button>
-                        Diventa un Rider
+                        <a href="https://riders.deliveroo.it/it/apply">
+                            Diventa un Rider
+                        </a>
                     </button>
                 </div>
 
@@ -62,7 +64,9 @@
 
                 <div class="title-wrapper">
                     <button>
-                        Lavora con noi
+                        <a href="https://restaurants.deliveroo.com/it-it/?utm-campaign=workwithus&utm-medium=organic&utm-source=landingpage">
+                            Lavora con noi
+                        </a>
                     </button>
                     
                 </div>
