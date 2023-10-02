@@ -137,11 +137,38 @@
                     </div>
                 </div>
             </div>
+        
+            <div class="deliver-info">
+                <h3>
+                    I tuoi dati di consegna:
+                </h3>
+                <form>
+                    <div class="form-element">
+                        <p>
+                            Inserisci il nome:
+                        </p>
+                        <input type="text" v-model="name">
+                    </div>
+                    <div class="form-element">
+                        <p>
+                            Inserisci il telefono:
+                        </p>
+                        <input type="tel" v-model="phone">
+                    </div>
+                    <div class="form-element">
+                        <p>
+                            Indirizzo di consegna:
+                        </p>
+                        <input type="text" v-model="address">
+                    </div>
+                </form>
+            </div>
+
             <div class="order-total">
                 <h4>
                     Totale: {{ total }} €
                 </h4>
-                <a class="btn btn-primary" href="http://127.0.0.1:8000/payment">
+                <a class="btn btn-primary" @click="sendOrderData()" href="http://127.0.0.1:8000/payment">
                     Completa l'ordine
                 </a>
             </div>
@@ -160,7 +187,11 @@ export default {
     data() {
         return {
             store,
-            restaurantApiUrl: 'http://127.0.0.1:8000/api/restaurant',
+            OrderApiUrl: 'http://127.0.0.1:8000/api/order-data',
+            PaymentApiUrl: 'http://127.0.0.1:8000/api/restaurant',
+            name: '',
+            phone: '',
+            address: '',
             plates: [],
             orders: [],
             ordersQuantity: [],
@@ -170,6 +201,36 @@ export default {
     },
 
     methods: {
+        sendOrderData(){
+            axios.post(this.OrderApiUrl, {
+                name: this.name,
+                phone: this.phone,
+                address: this.address,
+            })
+                .then( (response) => {
+                    this.response = response.data.success;
+                    console.log(this.name, this.phone, this.address);
+                    console.log(response);
+                 })
+                .catch(function (error) {
+                    console.log(error);
+                })
+        },
+        sendPaymentData(){
+            axios.post(this.typologyApiUrl, {
+                name: this.name,
+                phone: this.phone,
+                address: this.address,
+            })
+                .then( (response) => {
+                    this.response = response.data.success;
+                    console.log(this.name, this.phone, this.address);
+                    console.log(response);
+                 })
+                .catch(function (error) {
+                    console.log(error);
+                })
+        },
         getSelectedRestourant(id){
             this.store.restaurantsList.forEach((restaurant) => {
                 if(restaurant.id == id){
@@ -370,7 +431,7 @@ section.menu-searchbar{
             background-color: $YellowColor;
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
             border-radius: 0.5rem;
-            height: 400px;
+            height: 660px;
             // margin-top: 3rem;
             // margin-right: 2rem;
             margin: 3rem 1rem;
@@ -442,6 +503,21 @@ section.menu-searchbar{
                     padding: 0.5rem;
                 }
                 
+            }
+
+            div.deliver-info{
+                h3{
+                    margin-top: 2rem;
+                }
+                div.form-element{
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    p{
+                        margin-bottom: 0;
+                    }
+                }
             }
         }
     }

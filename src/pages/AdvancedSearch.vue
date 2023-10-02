@@ -13,8 +13,8 @@
                 Cerca per tipologia:
             </h4>
             <ul>
-                <li v-for="typology in typologies">
-                    <button @click="typeSelected = typology.id">
+                <li v-for="(typology,index) in typologies">
+                    <button @click="typeSelected = typology.id" :class="(typology.id == typeSelected)?'selected' :''">
                         {{ typology.name }}
                     </button>
                 </li>
@@ -32,7 +32,7 @@
                         <p>
                             Tipologia: {{ restaurant.typologies[0].name }}
                         </p>
-                        <img :src="restaurant.image" alt="">
+                        <img :src="restaurant.image" alt="Immagine del ristorante selezionato">
                         <p class="mt-3">
                             <strong>Address:</strong> {{ restaurant.address }}
                         </p>
@@ -75,10 +75,16 @@ export default {
             restaurants: [],
             type_restaurant:[],
             searchInput: '',
-            typeSelected: 2,    
+            typeSelected: 0,    
         }
     },
     methods:{
+
+        returnToDefType(id){
+            if(id === this.typeSelected){
+                this.typeSelected = 0;
+            }
+        },
 
         // PRENDE LE TIPOLOGIE VIA API
         getTypology(){
@@ -209,6 +215,11 @@ export default {
                     padding: 0.3rem 0;
                     border: 1px solid $BlueColor;
                     border-radius: 0.3rem;
+                }
+                button.selected{
+                    width: 170px;
+                    padding: 0.5rem 0;
+                    border: 3px solid white;
                 }
             }
         }
