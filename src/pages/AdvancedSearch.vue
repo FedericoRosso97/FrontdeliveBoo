@@ -36,13 +36,13 @@
                         <p class="mt-3">
                             <strong>Address:</strong> {{ restaurant.address }}
                         </p>
-                        <p>
+                        <!-- <p>
                             <strong>Mail:</strong> {{ restaurant.email }}
-                        </p>
-                        <p>
+                        </p> -->
+                        <!-- <p>
                             <i class="fa-solid fa-clock"></i>
                             {{ restaurant.opening_time }}
-                        </p>
+                        </p> -->
                         <p>
                             <i class="fa-solid fa-star yellow" v-for="star in dividedNum(restaurant.vote)"></i>
                             <i class="fa-solid fa-star" v-for="star in 5 - dividedNum(restaurant.vote)"></i>

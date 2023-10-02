@@ -61,14 +61,14 @@
                 </p>
             </li>
 
-            <li>
+            <!-- <li>
                 <p>
                     <strong>
                         Opening: 
                     </strong>
                     {{ restaurant.opening_time }}
                 </p>
-            </li>
+            </li> -->
 
             <li>
                 <p>
