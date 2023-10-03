@@ -27,7 +27,7 @@
                 <div v-if="searchElement(restaurant) && filterByTypology(restaurant.typologies[0].id)" :class="(searchElement(restaurant) === true)? 'find' : 'no-result' ">
                     <div class="info-restaurant">
                         <h1>
-                            {{ restaurant.name }} {{ restaurant.id }}
+                            {{ restaurant.name }} 
                         </h1>
                         <p>
                             Tipologia: {{ restaurant.typologies[0].name }}
